@@ -1,0 +1,34 @@
+
+ali_back_expert_ajout:
+    path:     /ajoutExpert
+    defaults: { _controller: AliBackBundle:Expert:new }
+ali_back_expert_suppression:
+    path:     /supprimerExpert/{id}
+    defaults: { _controller: AliBackBundle:Expert:delete }
+ali_back_expert_modification:
+    path:     /modifierExpert/{id}
+    defaults: { _controller: AliBackBundle:Expert:edit }
+ali_back_expert_view:
+    path:     /viewExpert
+    defaults: { _controller: AliBackBundle:Expert:index }
+ali_back_rendezVous_suppression:
+    path:     /supprimerrendezVous/{id}
+    defaults: { _controller: AliBackBundle:rendezVous:delete }
+ali_back_rendezVous_modification:
+    path:     /modifierrendezVous/{id}
+    defaults: { _controller: AliBackBundle:rendezVous:edit }
+ali_back_rendezVous_view:
+    path:     /viewrendezVous
+    defaults: { _controller: AliBackBundle:rendezVous:index }
+ali_back_rendezVous_view_traitee:
+    path:     /viewrendezVousTraitement
+    defaults: { _controller: AliBackBundle:rendezVous:ListeRendezVousNonTraite }
+ali_back_rendezVous_traiter_RendezVous:
+    path:     /traiterRendezVous/{id}
+    defaults: { _controller: AliBackBundle:rendezVous:TraiterRendezVous }
+ali_back_statistique:
+    path:     /statistique
+    defaults: { _controller: AliBackBundle:Expert:stat }
+ali_back_calendar:
+    path:     /calendrier
+    defaults: { _controller: AliBackBundle:Expert:calender }

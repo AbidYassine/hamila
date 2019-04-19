@@ -1,0 +1,17 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <div class="p-5">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    {{ form_start(form) }}
+    {{ form_row(form.idExpert, {'attr': {'class': 'idExpert'}}) }}
+    {{ form_row(form.idClient, {'attr': {'class': 'idClient'}}) }}
+    {{ form_row(form.dateRendezVous, {'attr': {'class': 'dateRendezVous'}}) }}
+    {{ form_row(form.lieuRendezVous, {'attr': {'class': 'lieuRendezVous'}}) }}
+    {{ form_row(form.etat, {'attr': {'class': 'etat'}}) }}
+    <input type="submit" value="Ajouter"class="btn btn-primary" >
+    {{ form_end(form) }}
+    </div>
+    </div>
+{% endblock %}

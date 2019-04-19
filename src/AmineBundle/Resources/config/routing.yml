@@ -1,0 +1,95 @@
+amine_remboursement:
+    resource: "@AmineBundle/Resources/config/routing/remboursement.yml"
+    prefix:   /remboursement
+
+amine_cotisation:
+    resource: "@AmineBundle/Resources/config/routing/cotisation.yml"
+    prefix:   /cotisation
+
+amine_homepage:
+    path:     /
+    defaults: { _controller: AmineBundle:Default:index }
+
+amine_Backhomepage:
+    path:     /back
+    defaults: { _controller: AmineBundle:Default:indexBack }
+
+cotisationCalcul:
+    path:     /cotisation/{prixoffre}/{nbtranche}
+    defaults: { _controller: AmineBundle:Cotisation:appelcalcul }
+
+
+cotisationBackIndex:
+    path:    /cotisationBack/
+    defaults: { _controller: AmineBundle:CotisationBack:index}
+
+cotisationBackShow:
+    path:    /cotisationBack/{idCotisation}/show
+    defaults: { _controller: AmineBundle:CotisationBack:show}
+    methods:  [GET, POST]
+
+cotisationBackEdit:
+    path:    /cotisationBack/{idCotisation}/edit
+    defaults: { _controller: AmineBundle:CotisationBack:edit}
+    methods:  [GET, POST]
+
+cotisationBackDelete:
+    path:     /cotisationBack/{idCotisation}/delete
+    defaults: { _controller: AmineBundle:CotisationBack:delete}
+    methods:  DELETE
+
+remboursementBackIndex:
+    path:    /remboursementBack/
+    defaults: { _controller: AmineBundle:RemboursementBack:index}
+
+remboursementBackShow:
+    path:    /remboursementBack/{idRemboursement}/show
+    defaults: { _controller: AmineBundle:RemboursementBack:show}
+    methods:  [GET, POST]
+
+remboursementBackEdit:
+    path:    /remboursementBack/{idRemboursement}/edit
+    defaults: { _controller: AmineBundle:RemboursementBack:edit}
+    methods:  [GET, POST]
+
+remboursementBackDelete:
+    path:     /remboursementBack/{idRemboursement}/delete
+    defaults: { _controller: AmineBundle:RemboursementBack:delete}
+    methods:  DELETE
+
+remboursementBackpiecejoint:
+    path:     /remboursementBack/{idRemboursement}/piecejoint
+    defaults: { _controller: "AmineBundle:RemboursementBack:piecejoint" }
+
+choixRemboursement:
+    path:   /choixRemboursement
+    defaults: { _controller: AmineBundle:Remboursement:choix}
+
+recuperer:
+    path:     /nouveau/{id}
+    defaults: { _controller: "AmineBundle:Remboursement:newSous" }
+    methods:  [GET, POST]
+
+supprimerNotif:
+    path:     /delete/{id}
+    defaults: { _controller: "AmineBundle:Notification:supprimerNotif" }
+
+detailleClient:
+    path:     /datailleClient/{id}
+    defaults: { _controller: "AmineBundle:CotisationBack:detailClient" }
+
+remboursementBacksupp:
+    path:     /remboursementBack/{idRemboursement}/supprimer
+    defaults: { _controller: "AmineBundle:RemboursementBack:supprimerRemboursement"}
+
+clientCotisation:
+    path:     /ClientCotisation/{id}
+    defaults: { _controller: "AmineBundle:CotisationBack:clientCotisation"}
+
+clientRemboursement:
+    path:   /ClientRemboursement/{id}
+    defaults: { _controller: "AmineBundle:RemboursementBack:clientRemboursement"}
+
+supprimerCotisation:
+    path: /supmrimerCotisation/{id}
+    defaults: { _controller: "AmineBundle:CotisationBack:supprimerCotisation"}

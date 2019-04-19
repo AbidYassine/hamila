@@ -1,0 +1,43 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('back/css/table.css') }}" />:
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+
+
+                <div class="card-body">
+                    <div class="table-responsive">
+
+                        <div class="tableaux">
+
+                            <table class="table table-bordered" width="100%" cellspacing="0" id="dataTable" style="display:inline">
+
+
+                                <tr>
+                                    <th><center>Nom</center></th>
+                                    <th><center>Prenom</center></th>
+                                    <th><center>E-mail</center></th>
+                                    <th>List des demandes</th>
+                                </tr>
+
+                                {% for user in client %}
+                                    <tr>
+                                        <td><center>{{ user.nom }}</td>
+                                        <td><center>{{ user.prenom }}</center></td>
+                                        <td><center>{{ user.email }}</center></td>
+                                        <td> <center><a href="{{ path('clientRemboursement', { 'id': user.id }) }}" class="btn btn-success btn-lg"><span  class="glyphicon glyphicon-edit"></span> </a></center></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock  %}

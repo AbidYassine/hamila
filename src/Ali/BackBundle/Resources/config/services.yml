@@ -1,0 +1,4 @@
+services:
+#    ali_back.example:
+#        class: Ali\BackBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div id="qbootstrap-services">
+        <div class="container">
+            <h3>votre souscription</h3>
+            <table class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%" >
+                <tr>
+
+                    <th>nom assureur</th>
+                    <th>nombreTranche</th>
+                    <th>date souscription</th>
+                    <th>conjoint</th>
+                    <th>montant</th>
+                </tr>
+
+                    <tr>
+
+                        <td>{{ souscription.offre.assureur.nomAssureur }}</td>
+                        <td>{{ souscription.nombreTranche }}</td>
+                        <td>{{ souscription.dateSouscription |date('Y-m-d') }}</td>
+                        <td>{{ souscription.conjoint }}</td>
+                        <td>{{ souscription.montant }} dt</td>
+
+                    </tr>
+            </table>
+            <br>
+             <a href="{{ path('youssef_front_userSouscription_souscription') }}" > retour </a>
+
+        </div>
+    </div>
+
+{% endblock  %}

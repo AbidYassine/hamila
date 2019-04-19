@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ form_start(edit_form) }}
+    <a style="display: none"> {{ form_row(edit_form.idExperience) }} </a>
+    <a style="display: none"> {{ form_row(edit_form.idClient) }}</a>
+    <h4 style="color: #4dd0e1" ><center>{{ form_row(edit_form.commentaire) }}</center></h4>
+    <a style="display: none">{{ form_row(edit_form.dateReponse) }}</a>
+    <center><input type="submit" class="btn btn-primary" value="modifier" ></center>
+    {{ form_end(edit_form) }}
+{% endblock %}

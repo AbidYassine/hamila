@@ -1,0 +1,46 @@
+
+demande_index_back:
+  path:     /demande/
+  defaults: { _controller: "HayderBundle:DemandeBack:index" }
+  methods:  GET
+
+demande_show_back:
+  path:     /demande/{id}/show
+  defaults: { _controller: "HayderBundle:DemandeBack:show" }
+  methods:  GET
+
+
+
+demande_reponse:
+  path:     /demande/demande/repondre
+  defaults: { _controller: "HayderBundle:DemandeBack:repondre" }
+  methods:  [GET, POST]
+
+demande_delete_back:
+  path:     /demande/{id}/delete
+  defaults: { _controller: "HayderBundle:DemandeBack:delete" }
+  methods:  DELETE
+
+
+
+
+reclamation_index_back:
+  path:     /reclamation/
+  defaults: { _controller: "HayderBundle:ReclamationBack:index" }
+  methods:  GET
+
+
+reclamation_reponse:
+  path:     /reclamation/repondre
+  defaults: { _controller: "HayderBundle:ReclamationBack:repondre" }
+  methods:  [GET, POST]
+
+reclamation_show_back:
+  path:     /reclamation/{id}/show
+  defaults: { _controller: "HayderBundle:ReclamationBack:show" }
+  methods:  GET
+
+reclamation_delete_back:
+  path:     /reclamation/{id}/delete
+  defaults: { _controller: "HayderBundle:ReclamationBack:delete" }
+  methods:  DELETE

@@ -1,0 +1,83 @@
+Cotisation:
+    type: entity
+    table: cotisation
+    indexes:
+        FK_id_client:
+            columns:
+                - id_client
+        FK_id_souscription:
+            columns:
+                - id_souscription
+    id:
+        idCotisation:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_cotisation
+            generator:
+                strategy: IDENTITY
+    fields:
+        idAssureur:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_assureur
+        idSouscription:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_souscription
+        prixHt:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: Prix_HT
+        prixTtc:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: Prix_TTC
+        tva:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: TVA
+        dateDebutCotisation:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: date_debut_cotisation
+        dateFinCotisation:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: date_fin_cotisation
+        paiement:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    manyToOne:
+        idClient:
+            targetEntity: Client
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_client:
+                    referencedColumnName: id_client
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

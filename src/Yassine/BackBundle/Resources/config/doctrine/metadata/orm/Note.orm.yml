@@ -1,0 +1,25 @@
+Note:
+    type: entity
+    table: note
+    id:
+        idExpert:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_expert
+            generator:
+                strategy: IDENTITY
+    fields:
+        note:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        comp:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+    lifecycleCallbacks: {  }

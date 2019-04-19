@@ -1,0 +1,78 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('back/css/table.css') }}" />:
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+
+                <div class="cp-coming-inner">
+                    <form method="get">
+                        <input type="text" id="search" class="widget widget-search widget-search2" name="s" value="" placeholder=" Cherchez-vous quelque chose ?" autocomplete="off" >
+
+                        <a href="#" class="searchIcon aIco search" title="Search"></a>
+                        <button class="btn-submit" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+
+                </div>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                <script>
+                    $('#search').keyup(function(){
+                        var valThis = $(this).val();
+                        $('.navList>li').each(function(){
+                            var text = $(this).text().toLowerCase();
+                            (text.indexOf(valThis) == 0) ? $(this).show() : $(this).hide();
+                        });
+                    });
+                </script>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+
+                        <div class="tableaux">
+
+                            <table class="table table-bordered" width="100%" cellspacing="0" id="dataTable" style="display:inline">
+
+
+                                <tr>
+
+                                    <th>Prixht</th>
+                                    <th>Prixttc</th>
+                                    <th>Tva</th>
+                                    <th>Datedebutcotisation</th>
+                                    <th>Datefincotisation</th>
+                                    <th>Paiement</th>
+                                    <th>Actions</th>
+
+                                </tr>
+
+                                {% for cotisation in cotisations %}
+                                    <tr>
+
+                                        <td><center>{{ cotisation.prixHt }}</center></td>
+                                        <td><center>{{ cotisation.prixTtc }}</center></td>
+                                        <td><center>{{ cotisation.tva }}</center></td>
+                                        <td><center>{{ cotisation.dateDebutCotisation }}</center></td>
+                                        <td><center>{{ cotisation.dateFinCotisation }}</center></td>
+                                        <td><center>{{ cotisation.paiement }}</center></td>
+
+                                        <td> <center><a href="{{ path('supprimerCotisation', { 'id': cotisation.idCotisation }) }}" class="btn btn-danger btn-lg"><span  class="glyphicon glyphicon-trash"></span> </a></center></td>
+                                        <td><center><a href="{{ path('cotisationBackEdit', { 'idCotisation': cotisation.idCotisation }) }}" class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-edit"></span></a></center> </td>
+
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock  %}

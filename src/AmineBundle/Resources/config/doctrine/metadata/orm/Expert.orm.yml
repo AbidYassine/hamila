@@ -1,0 +1,49 @@
+Expert:
+    type: entity
+    table: expert
+    id:
+        idExpert:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_expert
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomExpert:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: nom_expert
+        prenomExpert:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: prenom_expert
+        telephoneExpert:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: telephone_expert
+        emailExpert:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: email_expert
+        disponibiliteExpert:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: disponibilite_expert
+    lifecycleCallbacks: {  }

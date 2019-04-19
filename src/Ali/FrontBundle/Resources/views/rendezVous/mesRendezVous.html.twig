@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row animate-box">
+            <div class="row">
+                <br>
+                {% for rendezVous in mesRendezVous %}
+                    <div  class="col-md-4 animate-box">
+                        <div class="services">
+						<span   class="icon">
+							<i  class="icon-flow-merge"></i>
+						</span>
+                            <div class="desc" class="side animate-box fadeInUp animated-fast">
+                                <ul>
+                                    <li>date  {{ rendezVous.dateRendezVous|date('Y-m-d') }}</li>
+                                    <li>lieu {{ rendezVous.lieuRendezVous }}</li>
+                                    {% if rendezVous.etat == 0 %}
+                                        <li>rendez-vous non pris en charge</li>
+                                        <p> vous pouvez modifier ou annuler </p>
+                                        <a href="{{ path('ali_front_rendezVous_modification',{'id' : rendezVous.id}) }}" class="btn-success">mofidier</a>
+                                        <a href="{{ path('ali_front_rendezVous_annulation',{'id' : rendezVous.id}) }}" class="btn-danger" >annuler</a>
+
+                                    {% endif %}
+                                    {% if rendezVous.etat == 1 %}
+                                        <li>rendez-vous pris en charge</li>
+                                    {% endif %}
+                                    {% if rendezVous.etat == 2 %}
+                                        <li>rendez-vous terminee</li>
+                                        <a href="{{ path('ali_front_rendezVous_like',{'id' : rendezVous.id}) }}" class="btn-success">j'aime</a>
+                                        <a href="{{ path('ali_front_rendezVous_dislike',{'id' : rendezVous.id}) }}" class="btn-danger" >je n'aime pas</a>
+                                    {% endif %}
+                                    {% if rendezVous.etat == 3 %}
+                                        <li>merci pour votre avis</li>
+                                    {% endif %}
+                                    <br>
+                                    <br>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

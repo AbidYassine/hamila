@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+
+    <center><h1>Remboursements list</h1></center>
+    <table class="display nowrap table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Montantoperation</th>
+                <th>Montantrembourcement</th>
+                <th>Typerembourcement</th>
+                <th>Validation</th>
+                <th>Daterembourcement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for remboursement in remboursements %}
+            <tr>
+                <td>{{ remboursement.montantOperation }}</td>
+                <td>{{ remboursement.montantRembourcement }}</td>
+                <td>{{ remboursement.typeRembourcement }}</td>
+                <td>{{ remboursement.validation }}</td>
+                <td>{{ remboursement.dateRembourcement }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('remboursement_show', { 'idRemboursement': remboursement.idRemboursement }) }}">Détaille</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('youssef_front_userSouscription_souscription') }}">Demande d'un nouveau remboursement</a>
+        </li>
+    </ul>
+    </div>
+{% endblock %}

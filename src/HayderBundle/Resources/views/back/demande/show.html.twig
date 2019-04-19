@@ -1,0 +1,69 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+<center>
+    <h1>Demande</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ demande.id }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ demande.etat }}</td>
+            </tr>
+            <tr>
+                <th>Typedemande</th>
+                <td>{{ demande.typeDemande }}</td>
+            </tr>
+            <tr>
+                <th>Motif</th>
+                <td>{{ demande.motif }}</td>
+            </tr>
+            <tr>
+                <th>Typesoin</th>
+                <td>{{ demande.typeSoin }}</td>
+            </tr>
+            <tr>
+                <th>Textelibre</th>
+                <td>{{ demande.texteLibre }}</td>
+            </tr>
+            <tr>
+                <th>Piecejointe</th>
+                <td>{{ demande.pieceJointe }}</td>
+            </tr>
+            <tr>
+                <th>Reponse</th>
+                <td>{{ demande.reponse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('demande_index_back') }}">Back to the list</a>
+        </li>
+        <li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+    <h1>Repondre</h1>
+
+    <form action="{{ path('demande_reponse') }}" method="post">
+        <input type="hidden" name="id" value="{{ demande.id }}">
+        <textarea name="reponse" ></textarea><br>
+        <select name="etat">
+            <option value="non traite">non traite</option>
+            <option value="En cours">En cours</option>
+            <option value="Traite">Traite</option>
+        </select><br>
+        <input type="submit" value="Repondre">
+    </form>
+</center>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{% block javascripts %}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {% block documentReady %}
+        <script>
+
+            $(".Offre.id").prop("readonly", true);</script>
+    {% endblock documentReady %}
+{% endblock javascripts %}
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    {{ form_start(form) }}
+    {{ form_row(form.idClient, {'attr': {'class': 'idClient'}}) }}
+    {{ form_row(form.nombreTranche, {'attr': {'class': 'nombreTranche'}}) }}
+    {{ form_row(form.conjoint, {'attr': {'class': 'conjoint'}}) }}
+    {{ form_row(form.nbEnfant, {'attr': {'class': 'conjoint'}}) }}
+    {{ form_row(form.montant, {'attr': {'class': 'montant'}}) }}
+    {{ form_row(form.dateSouscription, {'attr': {'class': 'dateSouscription'}}) }}
+
+    <br>
+<input type="submit" value="ajouter" />
+{{ form_end(form) }}
+    </div>
+    </div>
+{% endblock %}

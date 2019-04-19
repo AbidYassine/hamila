@@ -1,0 +1,28 @@
+remboursement_index:
+    path:     /
+    defaults: { _controller: "AmineBundle:Remboursement:index" }
+    methods:  GET
+
+remboursement_show:
+    path:     /{idRemboursement}/show
+    defaults: { _controller: "AmineBundle:Remboursement:show" }
+    methods:  GET
+
+remboursement_new:
+    path:     /new
+    defaults: { _controller: "AmineBundle:Remboursement:new" }
+    methods:  [GET, POST]
+
+remboursement_edit:
+    path:     /{idRemboursement}/edit
+    defaults: { _controller: "AmineBundle:Remboursement:edit" }
+    methods:  [GET, POST]
+
+remboursement_delete:
+    path:     /{idRemboursement}/delete
+    defaults: { _controller: "AmineBundle:Remboursement:delete" }
+    methods:  DELETE
+
+remboursement_piecejoint:
+    path:     /{idRemboursement}/piecejoint
+    defaults: { _controller: "AmineBundle:Remboursement:piecejoint" }

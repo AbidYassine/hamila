@@ -1,0 +1,89 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+
+
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered"  width="100%" cellspacing="0"id="dataTable">
+        <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(demandes, 'Id', 'a.id') }}</th>
+                <th>{{ knp_pagination_sortable(demandes, 'User', 'a.user') }}</th>
+                <th>{{ knp_pagination_sortable(demandes, 'Etat', 'a.etat') }}</th>
+                <th>{{ knp_pagination_sortable(demandes, 'Typedemande', 'a.typeDemande') }}</th>
+                <th>{{ knp_pagination_sortable(demandes, 'Motif', 'a.motif') }}</th>
+                <th>{{ knp_pagination_sortable(demandes, 'Typesoin', 'a.typesoin') }}</th>
+                <th>{{ knp_pagination_sortable(demandes, 'Textelibre', 'a.texteLibre') }}</th>
+                <th>{{ knp_pagination_sortable(demandes, 'Piecejointe', 'a.pieceJointe') }}</th>
+                <th>{{ knp_pagination_sortable(demandes, 'Date', 'a.date') }}</th>
+                <th>{{ knp_pagination_sortable(demandes, 'Reponse', 'a.reponse') }}</th>
+                <th>Block</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demande in demandes %}
+            <tr>
+                <td><a href="{{ path('demande_show_back', { 'id': demande.id }) }}">{{ demande.id }}</a></td>
+                <td>{{ demande.user }}</td>
+                <td>{{ demande.etat }}</td>
+                <td>{{ demande.typeDemande }}</td>
+                <td>{{ demande.motif }}</td>
+                <td>{{ demande.typeSoin }}</td>
+                <td>{{ demande.texteLibre }}</td>
+                <td>{{ demande.pieceJointe }}</td>
+                <td>{{ demande.date|date }}</td>
+                <td>{{ demande.reponse }}</td>
+                <td><button onclick="block{{ demande.id }}()">Block</button></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('demande_show_back', { 'id': demande.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <script>
+                function block{{ demande.id }}(){
+                    $.get("{{ path('block',{'id':demande.user.id}) }}",
+                        {
+                            critere: 'sss'
+                        },
+                        function(data){
+
+                        });
+                }
+            </script>
+        {% endfor %}
+        </tbody>
+    </table>
+                        <div class="navigation">
+                            {{ knp_pagination_render(demandes) }}
+                        </div>
+                    </div></div></div></div></div>
+
+<center>
+    <br><br><br><br>
+    <div id="div_chart"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_draw(piechart, 'div_chart') }}
+    </script>
+</center>
+
+
+
+
+
+{% endblock %}

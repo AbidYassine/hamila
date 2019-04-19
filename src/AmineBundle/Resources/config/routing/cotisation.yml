@@ -1,0 +1,24 @@
+cotisation_index:
+    path:     /
+    defaults: { _controller: "AmineBundle:Cotisation:index" }
+    methods:  GET
+
+cotisation_show:
+    path:     /{idCotisation}/show
+    defaults: { _controller: "AmineBundle:Cotisation:show" }
+    methods:  GET
+
+cotisation_new:
+    path:     /new
+    defaults: { _controller: "AmineBundle:Cotisation:new" }
+    methods:  [GET, POST]
+
+cotisation_edit:
+    path:     /{idCotisation}/edit
+    defaults: { _controller: "AmineBundle:Cotisation:edit" }
+    methods:  [GET, POST]
+
+cotisation_delete:
+    path:     /{idCotisation}/delete
+    defaults: { _controller: "AmineBundle:Cotisation:delete" }
+    methods:  DELETE

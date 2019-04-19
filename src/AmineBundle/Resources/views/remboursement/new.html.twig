@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <center>
+    <h1>Remboursement</h1>
+    <table>
+
+        {{ form_start(form) }}
+
+    <h  visibility: hidden>{{ form_widget(form.idClient,{'value' : app.user.id}) }}</h>
+    <h  visibility: hidden>{{ form_widget(form.idSouscription) }}</h>
+    <h  visibility: hidden>{{ form_widget(form.idAssureur) }}</h>
+        <tr>
+            <td><h5>Montant Operation</h5></td>
+            <td>{{ form_widget(form.montantOperation) }} </td>
+        </tr>
+
+    <h  visibility: hidden>{{ form_widget(form.montantRembourcement) }}</h>
+        <tr>
+            <td><h5>Piece jointe</h5> </td>
+            <td>Image src :<input  type="file" {{ form_widget(form.pieceJointe) }}</td>
+        </tr>
+
+    <h  visibility: hidden>{{ form_widget(form.extension) }}</h>
+        <tr>
+
+            <td>Commentaire</td>
+            <td>{{ form_widget(form.commentaireRembourcement) }}</td>
+
+        </tr>
+
+        <tr>
+            <td>Type Remboursement</td>
+            <td>{{ form_widget(form.typeRembourcement) }}</td>
+        </tr>
+    </table>
+    <h  visibility: hidden>{{ form_widget(form.validation) }}</h>
+    <h  visibility: hidden>{{ form_widget(form.dateRembourcement) }}</h>
+
+    <input class="btn btn-success btn-lg" type="submit" value="Création" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('remboursement_index') }}">Retour a la liste</a>
+        </li>
+    </ul>
+
+
+    </center>
+    <script>
+        (function($) {
+            $.fn.inputFilter = function(inputFilter) {
+                return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+                    if (inputFilter(this.value)) {
+                        this.oldValue = this.value;
+                        this.oldSelectionStart = this.selectionStart;
+                        this.oldSelectionEnd = this.selectionEnd;
+                    } else if (this.hasOwnProperty("oldValue")) {
+                        this.value = this.oldValue;
+                        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                    }
+                });
+            };
+        }(jQuery));
+
+        $("#aminebundle_remboursement_montantOperation").inputFilter(function(value) {
+            return /^-?\d*[.,]?\d*$/.test(value); });
+    </script>
+{% endblock %}

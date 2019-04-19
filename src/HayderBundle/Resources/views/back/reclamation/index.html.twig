@@ -1,0 +1,80 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+
+<link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered"  width="100%" cellspacing="0"id="dataTable">
+        <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(reclamations, 'Id', 'a.id') }}</th>
+                <th>{{ knp_pagination_sortable(reclamations, 'User', 'a.user') }}</th>
+                <th>{{ knp_pagination_sortable(reclamations, 'Etat', 'a.etat') }}</th>
+                <th>{{ knp_pagination_sortable(reclamations, 'Type reclamation', 'a.typeReclamation') }}</th>
+                <th>{{ knp_pagination_sortable(reclamations, 'Texte libre', 'a.texteLibre') }}</th>
+                <th>{{ knp_pagination_sortable(reclamations, 'Piece jointe', 'a.pieceJointe') }}</th>
+                <th>{{ knp_pagination_sortable(reclamations, 'Date', 'a.date') }}</th>
+                <th>{{ knp_pagination_sortable(reclamations, 'reponse', 'a.reponse') }}</th>
+                <th>Block</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td><a href="{{ path('reclamation_show_back', { 'id': reclamation.id }) }}">{{ reclamation.id }}</a></td>
+                <td>{{ reclamation.user }}</td>
+                <td>{{ reclamation.etat }}</td>
+                <td>{{ reclamation.typeReclamation }}</td>
+                <td>{{ reclamation.texteLibre }}</td>
+                <td>{{ reclamation.pieceJointe }}</td>
+                <td>{{ reclamation.date|date }}</td>
+                <td>{{ reclamation.reponse }}</td>
+                <td><button onclick="block{{ reclamation.id }}()">Block</button></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reclamation_show_back', { 'id': reclamation.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <script>
+                function block{{ reclamation.id }}(){
+                    $.get("{{ path('block',{'id':reclamation.user.id}) }}",
+                        {
+                            critere: 'sss'
+                        },
+                        function(data){
+
+                        });
+                }
+            </script>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(reclamations) }}
+    </div>
+                </div></div></div></div></div>
+
+
+    <center>
+        <br><br><br><br>
+        <div id="div_chart"></div>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            {{ gc_draw(piechart, 'div_chart') }}
+        </script>
+    </center>
+{% endblock %}

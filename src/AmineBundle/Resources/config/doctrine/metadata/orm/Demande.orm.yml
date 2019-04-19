@@ -1,0 +1,48 @@
+Demande:
+    type: entity
+    table: demande
+    id:
+        idDemande:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_demande
+            generator:
+                strategy: IDENTITY
+    fields:
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_client
+        idAssureur:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_assureur
+        typeDemande:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: type_demande
+        comentaireDemande:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: comentaire_demande
+        dateDemande:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: date_demande
+    lifecycleCallbacks: {  }

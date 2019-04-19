@@ -1,0 +1,22 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+
+
+    <p> le client d id {{ souscription.idClient }} propriétaire de la souscription d id {{ souscription.id }} a demander d annuler sa souscription  </p>
+    <br>
+            veuillez prendre une decision
+    <br>
+
+            <a href="{{ path('youssef_back_accepterDesabonner_Souscription',{'id' : souscription.id}) }}" class="btn btn-danger btn-lg">accepter  </a>
+            <a href="{{ path('youssef_back_rejeterDesabonner_Souscription',{'id' : souscription.id}) }}" class="btn btn-success btn-lg">rejeter</a>
+
+
+
+
+    </div>
+        {% endblock %}

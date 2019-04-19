@@ -1,0 +1,178 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    {% block javascripts %}
+
+        <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+
+        {% block documentReady %}
+
+            <script>
+                $(document).ready(function(){
+                    $("form").submit(function () {
+
+                        var a =0;
+                        var b =0;
+                        var c =0;
+                        var d =0;
+                        var error="";
+                        var newLine = "\r\n";
+                        len=$(".telephoneExpert").val().length;
+                        if(len!=8)
+                        {
+                            a=1;
+                            error+="le numero de telephone doit contenir 8 chiffres";
+                            error+= newLine;
+                        }
+                        var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+                        if(!regex.test($(".emailExpert").val()))
+                        {
+                            b=1;
+                            error+="invalide adresse mail";
+                            error+= newLine;
+                        }
+                        y=true;
+                        prenom=$(".prenomExpert").val();
+                        for(var i =0;i<prenom.length;i++)
+                        {
+                            if(prenom[i]=="8"||prenom[i]=="1"||prenom[i]=="2"||prenom[i]=="3"||prenom[i]=="4"||prenom[i]=="5"||prenom[i]=="6"||prenom[i]=="7"||prenom[i]=="7"||prenom[i]=="8"||prenom[i]=="9")
+                            {
+                                y=false;
+                            }
+
+                        }
+                        if(y==false)
+                        {
+                            c=1;
+                            error+="le prenom ne doit pas contenir des chiffres";
+                            error+= newLine;
+                        }
+                        l=true;
+                        nom=$(".nomExpert").val();
+                        for(var i =0;i<nom.length;i++)
+                        {
+                            if(nom[i]=="8"||nom[i]=="1"||nom[i]=="2"||nom[i]=="3"||nom[i]=="4"||nom[i]=="5"||nom[i]=="6"||nom[i]=="7"||nom[i]=="7"||nom[i]=="8"||nom[i]=="9")
+                            {
+                                l=false;
+                            }
+
+                        }
+                        if(l==false)
+                        {
+                            d=1;
+                            error+="le nom ne doit pas contenir des chiffres";
+                            error+= newLine;
+                        }
+
+                        if(a==1||b==1||c==1||d==1){
+                            alert(error);
+                            return false;
+                        }
+                    });
+                    $(".telephoneExpert").blur(function () {
+                        len=$(".telephoneExpert").val().length;
+                        if(len==8)
+                        {
+
+                            $(".lTelephone").hide();
+                            $("#divLabelTelephone").hide();
+                        }
+                        else {
+                            $(".lTelephone").show()
+                            $("#divLabelTelephone").show();
+                        }
+                    })
+                    $(".emailExpert").blur(function () {
+                        var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+                        if(!regex.test($(".emailExpert").val()))
+                        {
+                            $(".lEmail").show()
+                            $("#divLabelEmail").show();
+                        }
+                        else
+                        {
+                            $(".lEmail").hide();
+                            $("#divLabelEmail").hide();
+
+                        }
+                    })
+                    $(".prenomExpert").blur(function () {
+                        a=true;
+                        prenom=$(".prenomExpert").val();
+                        for(var i =0;i<prenom.length;i++)
+                        {
+                            if(prenom[i]=="8"||prenom[i]=="1"||prenom[i]=="2"||prenom[i]=="3"||prenom[i]=="4"||prenom[i]=="5"||prenom[i]=="6"||prenom[i]=="7"||prenom[i]=="7"||prenom[i]=="8"||prenom[i]=="9")
+                            {
+                                a=false;
+                            }
+
+                        }
+                        if(a==true)
+                        {
+
+                            $(".lPrenom").hide();
+                            $("#divLabelPrenom").hide();
+                        }
+                        else {
+                            $(".lPrenom").show();
+                            $("#divLabelPrenom").show();
+                        }
+
+
+                    })
+                    $(".nomExpert").blur(function () {
+                        a=true;
+                        nom=$(".nomExpert").val();
+                        for(var i =0;i<nom.length;i++)
+                        {
+                            if(nom[i]=="8"||nom[i]=="1"||nom[i]=="2"||nom[i]=="3"||nom[i]=="4"||nom[i]=="5"||nom[i]=="6"||nom[i]=="7"||nom[i]=="7"||nom[i]=="8"||nom[i]=="9")
+                            {
+                                a=false;
+                            }
+
+                        }
+                        if(a==true)
+                        {
+
+                            $(".lNom").hide();
+                            $("#divLabelNom").hide();
+                        }
+                        else {
+                            $(".lNom").show();
+                            $("#divLabelNom").show();
+                        }
+                    })
+
+
+                });
+            </script>
+        {% endblock documentReady %}
+    {% endblock javascripts %}
+    <div class="p-5">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    {{ form_start(form) }}
+    {{ form_row(form.nomExpert, {'attr': {'class': 'nomExpert'}}) }}
+    <div class="alert alert-danger" id="divLabelNom"style="display: none">
+        <label class="lNom" style=" display:none">le nom ne doit pas contenir des chiffres</label>
+    </div>
+    {{ form_row(form.prenomExpert, {'attr': {'class': 'prenomExpert'}}) }}
+    <div class="alert alert-danger" id="divLabelPrenom"style="display: none">
+        <label class="lPrenom" style=" display:none">le prenom ne doit pas contenir des chiffres</label>
+    </div>
+    {{ form_row(form.telephoneExpert, {'attr': {'class': 'telephoneExpert'}}) }}
+    <div class="alert alert-danger" id="divLabelTelephone"style="display: none">
+        <label class="lTelephone" style=" display:none">le numero de telephone doit contenir 8 chiffres</label>
+    </div>
+    {{ form_row(form.emailExpert, {'attr': {'class': 'emailExpert'}}) }}
+    <div class="alert alert-danger" id="divLabelEmail"style="display: none">
+        <label class="lEmail" style=" display:none">invalide adresse mail</label>
+    </div>
+    {{ form_row(form.adresse) }}
+    <input type="submit" value="Ajouter"class="btn btn-primary" >
+    {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cotisation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idcotisation</th>
+                <td>{{ cotisation.idCotisation }}</td>
+            </tr>
+            <tr>
+                <th>Idassureur</th>
+                <td>{{ cotisation.idAssureur }}</td>
+            </tr>
+            <tr>
+                <th>Idsouscription</th>
+                <td>{{ cotisation.idSouscription }}</td>
+            </tr>
+            <tr>
+                <th>Prixht</th>
+                <td>{{ cotisation.prixHt }}</td>
+            </tr>
+            <tr>
+                <th>Prixttc</th>
+                <td>{{ cotisation.prixTtc }}</td>
+            </tr>
+            <tr>
+                <th>Tva</th>
+                <td>{{ cotisation.tva }}</td>
+            </tr>
+            <tr>
+                <th>Datedebutcotisation</th>
+                <td>{{ cotisation.dateDebutCotisation }}</td>
+            </tr>
+            <tr>
+                <th>Datefincotisation</th>
+                <td>{{ cotisation.dateFinCotisation }}</td>
+            </tr>
+            <tr>
+                <th>Paiement</th>
+                <td>{{ cotisation.paiement }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cotisation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('cotisation_edit', { 'idCotisation': cotisation.idCotisation }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

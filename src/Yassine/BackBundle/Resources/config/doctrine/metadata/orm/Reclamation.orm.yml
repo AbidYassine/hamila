@@ -1,0 +1,61 @@
+Reclamation:
+    type: entity
+    table: reclamation
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        etat:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        typeReclamation:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: type_reclamation
+        texteLibre:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: texte_libre
+        pieceJointe:
+            type: blob
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: piece_jointe
+        extension:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+        gestionnaire:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        reponse:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        date:
+            type: datetime
+            nullable: true
+    lifecycleCallbacks: {  }

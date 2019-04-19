@@ -1,0 +1,36 @@
+BlockList:
+    type: entity
+    table: block_list
+    indexes:
+        id_client:
+            columns:
+                - id_client
+    id:
+        idBlock:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_block
+            generator:
+                strategy: IDENTITY
+    fields:
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_client
+        commentaire:
+            type: string
+            nullable: false
+            length: 6000
+            options:
+                fixed: false
+            column: Commentaire
+        dateBlock:
+            type: datetime
+            nullable: false
+            column: Date_Block
+    lifecycleCallbacks: {  }

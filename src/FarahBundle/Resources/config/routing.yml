@@ -1,0 +1,31 @@
+farah_homepage:
+    path:     /
+    defaults: { _controller: FarahBundle:Default:index }
+farah_affiche_don:
+    path:     /liste
+    defaults: { _controller: FarahBundle:Don:liste }
+farah_affiche_don_back:
+    path:     /back
+    defaults: { _controller: FarahBundle:Don:listeBack }
+farah_back_don_suppression:
+        path:     /back/delete/{id}
+        defaults: { _controller: FarahBundle:Don:delete }
+farah_back_don_modifier:
+    path:     /back/modifier/{id}
+    defaults: { _controller: FarahBundle:Don:edit }
+
+farah_don_ajouter:
+    path:     /don/ajouter
+    defaults: { _controller: FarahBundle:Don:ajouterDon }
+
+farah_don_donate:
+    path:     /don/donate/{idP}
+    defaults: { _controller: FarahBundle:Don:donate }
+
+farah_don_history:
+    path:     /don/mesHistoriques
+    defaults: { _controller: FarahBundle:Don:showHistory }
+
+farah_don_history_delete:
+    path:     /don/mesHistoriques/delete/{id}
+    defaults: { _controller: FarahBundle:Don:deleteHistory }

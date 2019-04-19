@@ -1,0 +1,4 @@
+services:
+#    youssef_back.example:
+#        class: Youssef\BackBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

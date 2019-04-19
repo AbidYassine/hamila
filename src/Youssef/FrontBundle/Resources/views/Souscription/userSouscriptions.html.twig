@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div id="qbootstrap-services">
+        <div class="container">
+        <h3>Mes souscriptions</h3>
+            <table class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%" >
+                <tr>
+
+                    <th>nom assureur</th>
+                    <th>nombreTranche</th>
+                    <th>date souscription</th>
+                    <th>conjoint</th>
+                    <th>montant</th>
+                    <th>annulation</th>
+                </tr>
+
+                {% for souscription in souscriptions %}
+                    <tr>
+
+                        <td>{{ souscription.offre.assureur.nomAssureur }}</td>
+                        <td>{{ souscription.nombreTranche }}</td>
+                        <td>{{ souscription.dateSouscription |date('Y-m-d') }}</td>
+                        <td>{{ souscription.conjoint }}</td>
+                        <td>{{ souscription.montant }} dt</td>
+                        {% if souscription.abonnement == 0  %}
+                        <td> <center><a href="{{ path('youssef_front_annulation_souscription',{'id' : souscription.id}) }}" > demande d'annulation </a></center></td>
+
+                        {% else %}
+                            <td>demandé</td>
+                            {% endif %}
+                            <td> <center><a href="{{ path('youssef_front_userSouscriptionAffiche_souscription',{'id' : souscription.id}) }}" > visualiser </a></center></td>
+                        <td> <center><a href="{{ path('recuperer',{'id' : souscription.id}) }}" > demande remboursement </a></center></td>
+
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock  %}

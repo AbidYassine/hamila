@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% set posts = 0 %}
+    {% set topics = 0 %}
+    {% set postsvalider = 0 %}
+
+
+
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <h1><a href="index.html" class="navbar-brand">Forum</a></h1>
+            <form class="form-inline">
+                <input type="text" class="form-control mr-3 mb-2 mb-sm-0" placeholder="Search">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container my-3">
+
+        <div class="row">
+            <div class="col-12 col-xl-9">
+                <h2 class="h4 bg-info mb-0 p-4 rounded-top"><a href="" class="text-white">Forum categories</a></h2>
+                <table class="table table-striped table-bordered table-responsive">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col" class="forum-col">Forum</th>
+                        <th scope="col">Posts</th>
+                        <th scope="col" class="last-post-col">Last post</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for experience in experiences %}
+                    {% if experience.valider != 0 %}
+                        {% set postsvalider = postsvalider + 1 %}
+                    <tr>
+                        <td>
+                            <h3 class="h5 mb-0"><a class="text-uppercase">Titre du sujet</a></h3>
+                            <p class="mb-0"> <a href="{{ path('yassine_back_answer_list',{'id' : experience.idExperience}) }}"> {{ experience.titreExperience | raw }}</a></p>
+                        </td>
+                        <td>
+                            <div>{{ experience.nbRep }}</div>
+                        </td>
+                        <td>
+                            <h4 class="h6 mb-0 font-weight-bold"><a href="post.html">Post name</a></h4>
+                            <div>by <a href="#0">{{ experience.idClient }}</a></div>
+                            <div>{{experience.dateExperience|date('Y-m-d')}}</div>
+                        </td>
+                    </tr>
+                    {% endif %}
+                        {% set posts = posts + experience.nbRep  %}
+                        {% set topics = topics + 1  %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <form class="mb-3"  action="{{ path('yassine_back_experience_ajout')}}" method="post" >
+                <div class="form-group">
+                    <label for="comment">Titre de sujet a ajouter au forum :</label>
+                    <textarea class="form-control" name="comment" id="comment" rows="2" placeholder="Entrer le titre du Sujet ici." required=""></textarea>
+                    <script> CKEDITOR.replace('comment') </script>
+                </div>
+                <button onclick="popup()" type="submit" class="btn btn-primary">Valider</button>
+                <button type="reset" class="btn btn-danger">Effacer</button>
+            </form>
+            <div class="col-12 col-xl-3">
+                <aside>
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-xl-12">
+                            <div class="card mb-3 mb-sm-0 mb-xl-3">
+
+                                <div class="card-footer">
+                                    <h2 class="h4 card-title">Forum statistics</h2>
+                                    <dl class="row mb-0">
+                                        <dt class="col-8">Total topics:</dt>
+                                        <dd class="col-4 mb-0">{{ topics }}</dd>
+                                    </dl>
+                                    <dl class="row mb-0">
+                                        <dt class="col-8">Topics Valider:</dt>
+                                        <dd class="col-4 mb-0">{{ postsvalider }}</dd>
+                                    </dl>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-xl-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <dl class="row mb-0">
+                                        <dl class="row mb-0">
+                                            <dt class="col-8">Total posts:</dt>
+                                            <dd class="col-4 mb-0">{{ posts }}</dd>
+                                        </dl>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Bootstrap JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function popup()
+    {
+    alert("Votre Titre de sujet a été  bien envoyé ! ce sera bientôt confirmé par l'administrateur ! vous recevrez un mail ");
+    }
+    </script>
+{% endblock %}

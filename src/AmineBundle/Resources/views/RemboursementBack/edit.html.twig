@@ -1,0 +1,66 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <h1>Remboursement edit</h1>
+<link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered"  width="100%" cellspacing="0"id="dataTable">
+                        {{ form_start(edit_form) }}
+                        <tr>
+                            <th>Id client</th>
+                            <th>Montant operation</th>
+                            <th>Montant remboursement</th>
+                            <th>Type remboursement</th>
+                            <th>date Remboursement</th>
+                            <th>Validation</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td><center>{{ form_widget(edit_form.idClient) }}</td>
+                            <td><center>{{ form_widget(edit_form.montantOperation) }}</td>
+                            <td><center>{{ form_widget(edit_form.montantRembourcement) }}</td>
+                            <td><center>{{ form_widget(edit_form.typeRembourcement) }}</td>
+                            <td><center>{{ form_widget(edit_form.dateRembourcement) }}</td>
+                            <td><center>{{ form_widget(edit_form.validation) }}</td>
+                            <td style="display: none;"><center>{{ form_widget(edit_form.idSouscription) }}</td>
+                            <td style="display: none;"><center>{{ form_widget(edit_form.idAssureur) }}</td>
+                            <td style="display: none;"><center>{{ form_widget(edit_form.pieceJointe) }}</td>
+                            <td style="display: none;"><center>{{ form_widget(edit_form.extension) }}</td>
+                            <td style="display: none;"><center>{{ form_widget(edit_form.commentaireRembourcement) }}</td>
+
+
+                            <td>
+                                <center>
+
+                                    {{ form_widget(edit_form) }}
+                                    <input type="submit" value="Modifier" class="btn btn-success btn-lg"/>
+                                    {{ form_end(edit_form) }}
+                                    <br>
+                                    {{ form_start(delete_form) }}
+                                    <input type="submit" value="Supprimer" class="btn btn-danger btn-lg">
+                                    {{ form_end(delete_form) }}
+                                </center>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <ul>
+        <li>
+            <a href="{{ path('remboursementBackIndex') }}">Retour a la liste</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,4 @@
+services:
+#    yassine_front.example:
+#        class: Yassine\FrontBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

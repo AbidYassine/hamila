@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <div id="qbootstrap-services">
+    <div class="container">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <div class="container">
+                <form method="post" action="{{ url('farah_don_ajouter') }}">
+                    <input type="text" name="nom" placeholder="nom"/>
+                    <input type="text" name="prenom" placeholder="prenom"/>
+                    <input type="text" name="desc" placeholder="desc"/>
+                    <input type="text" name="somme" placeholder="somme"/>
+
+                    <input type="submit" value="Ajouter"/>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    {% for message in app.flashes('success') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,4 @@
+services:
+#    youssef_front.example:
+#        class: Youssef\FrontBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

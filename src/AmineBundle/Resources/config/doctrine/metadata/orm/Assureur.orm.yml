@@ -1,0 +1,29 @@
+Assureur:
+    type: entity
+    table: assureur
+    id:
+        idAssureur:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_assureur
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomAssurance:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: nom_assurance
+        mailAssureur:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: mail_assureur
+    lifecycleCallbacks: {  }

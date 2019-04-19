@@ -1,0 +1,86 @@
+Offre:
+    type: entity
+    table: offre
+    id:
+        idOffre:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_offre
+            generator:
+                strategy: IDENTITY
+    fields:
+        idAssureur:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_assureur
+        typeOffre:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: type_offre
+        prixDeBaseOffre:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: prix_de_base_offre
+        dateDebutOffre:
+            type: date
+            nullable: false
+            column: date_debut_offre
+        pourcentageVisiteOffre:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: pourcentage_visite_offre
+        pourcentageMedicamentOffre:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: pourcentage_medicament_offre
+        pourcentageOperationOffre:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: pourcentage_operation_offre
+        plafondVisteOffre:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: plafond_viste_offre
+        plafondMediacementOffre:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: plafond_mediacement_offre
+        plafondOperationOffre:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: plafond_operation_offre
+        prConjoint:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: pr_conjoint
+        prEnfant:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: pr_enfant
+    lifecycleCallbacks: {  }

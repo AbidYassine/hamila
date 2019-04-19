@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/dataTables.bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+        <tr>
+            <th>idAvis</th>
+            <th>commentaireAvis</th>
+            <th>dateAvis</th>
+            <th>ratingAvis</th>
+            <th>idOffre</th>
+            <th>idClient</th>
+            <th>suppression</th>
+            <th>Modification</th>
+        </tr>
+        </thead>
+        {% for avis in avis %}
+            <tr>
+                <td >{{ avis.idAvis }}</td>
+                <td>{{ avis.commentaireAvis }}</td>
+                <td>{{ avis.dateAvis|date('Y-m-d') }}</td>
+                <td>{{ avis.ratingAvis }}</td>
+                <td >{{ avis.idOffre }}</td>
+                <td >{{ avis.idClient }}</td>
+                <td ><center><a href="{{ path('yassine_back_avis_supprission',{'id' : avis.idAvis}) }}" > supprimer</a></center></td>
+                <td><center><a href="{{ path('yassine_back_answer_modification',{'id' : avis.idAvis}) }}" >modifier </a></center> </td>
+            </tr>
+
+        {% endfor %}
+        <tr>
+            <td colspan="7"><center><a href="{{ path('yassine_back_avis_ajout') }}" >ajouter </a></center> </td>
+        </tr>
+
+    </table>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+
+    </script>
+
+
+
+
+{% endblock %}

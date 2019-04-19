@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <table class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+
+
+                <tr>
+                    <!-- <th>N°</th>-->
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Somme</th>
+                    <th>Somme Restante</th>
+                    <th>Description</th>
+                    <th>Action</th>
+
+
+                </tr>
+
+                {% for h in history %}
+                    <tr>
+
+                        <td>{{ h.don.somme }}</td>
+                        <td><a href="{{ url('farah_don_history_delete', {'id': h.id}) }}" class="btn btn-danger">delete</a>
+                        </td>
+
+
+                    </tr>
+
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+
+
+    {% for message in app.flashes('success') %}
+        <script>
+            alert("{{ message }}");
+        </script>
+    {% endfor %}
+
+    {% for message in app.flashes('success') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+{% endblock %}

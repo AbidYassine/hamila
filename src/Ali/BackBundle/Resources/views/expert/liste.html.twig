@@ -1,0 +1,33 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <div class="p-5">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <table border="1">
+
+        <tr>
+            <th>id expert</th>
+            <th>nom expert</th>
+            <th>prenom expert</th>
+            <th>email</th>
+            <th>type</th>
+
+        </tr>
+
+        {% for expert in experts %}
+            <tr>
+                <td>{{ expert.id }}</td>
+                <td>{{ expert.nomExpert }}</td>
+                <td>{{ expert.prenomExpert }}</td>
+                <td>{{ expert.emailExpert }}</td>
+                <td>{{ expert.type }}</td>
+                <td> <center><a href="{{ path('ali_back_expert_suppression',{'id' : expert.id}) }}" >supprimer</a> </center></td>
+                <td><center><a href="{{ path('ali_back_expert_modification',{'id' : expert.id}) }}" >modifier </a> </center> </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+    </div>
+    </div>
+{% endblock %}

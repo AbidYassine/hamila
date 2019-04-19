@@ -1,0 +1,66 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="card shadow mb-4">
+    <div class="card-header py-3">
+
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <form action ="{{ path('youssef_back_stat')}}" class="appointment-wrap animate-box fadeInUp animated-fast" method="post" id="stat">
+                <input type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" value="stat" >
+            </form>
+            <table class="table table-bordered"  width="100%" cellspacing="0"id="dataTable">
+
+
+    <tr>
+        <th>nom Assureur</th>
+
+        <th>prix De Base</th>
+        <th>date Debut</th>
+        <th>pourcentage Visite</th>
+        <th>pourcentage Medicament</th>
+        <th>pourcentage Operation</th>
+        <th>plafond Visite</th>
+        <th>plafond Medicament</th>
+        <th>plafond Operation</th>
+        <th>pourcentage Conjoint</th>
+        <th>pourcentage Enfant</th>
+        <th>suppression</th>
+        <th>modification</th>
+
+    </tr>
+
+    {% for offre in offres %}
+        <tr>
+            <td><center>{{ offre.Assureur.nomAssureur }}</td>
+
+            <td><center>{{ offre.prixDeBaseOffre }}</center></td>
+            <td><center>{{ offre.dateDebutOffre|date('Y-m-d') }}</center></td>
+            <td><center>{{ offre.pourcentageVisiteOffre }}</center></td>
+            <td><center>{{ offre.pourcentageMedicamentOffre }}</center></td>
+            <td><center>{{ offre.pourcentageOperationOffre }}</center></td>
+            <td><center>{{ offre.plafondVisiteOffre }}</center></td>
+            <td><center>{{ offre.plafondMedicamentOffre }}</center></td>
+            <td><center>{{ offre.plafondOperationOffre }}</center></td>
+            <td><center>{{ offre.prConjoint }}</center></td>
+            <td><center>{{ offre.prEnfant }}</center></td>
+
+            <td> <center><a href="{{ path('youssef_back_suppresion_offre',{'id' : offre.id}) }}" class="btn btn-danger btn-lg"><span  class="glyphicon glyphicon-trash"></span> </a></center></td>
+            <td><center><a href="{{ path('youssef_back_modifier_offre',{'id' : offre.id}) }}" class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-edit"></span></a></center> </td>
+
+        </tr>
+
+    {% endfor %}
+</table>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+{% endblock  %}

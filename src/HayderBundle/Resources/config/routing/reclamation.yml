@@ -1,0 +1,27 @@
+reclamation_index:
+    path:     /
+    defaults: { _controller: "HayderBundle:Reclamation:index" }
+    methods:  GET
+
+reclamation_show:
+    path:     /{id}/show
+    defaults: { _controller: "HayderBundle:Reclamation:show" }
+    methods:  GET
+
+reclamation_new:
+    path:     /new
+    defaults: { _controller: "HayderBundle:Reclamation:new" }
+    methods:  [GET, POST]
+
+reclamation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HayderBundle:Reclamation:edit" }
+    methods:  [GET, POST]
+
+reclamation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HayderBundle:Reclamation:delete" }
+    methods:  DELETE
+
+
+

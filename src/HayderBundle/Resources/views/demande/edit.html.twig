@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <script src="{{ asset('jquery.validate.js') }}"></script>
+    <script>
+        $().ready(function() {
+
+            // validate the comment form when it is submitted
+            $("#validate").validate();
+        });
+    </script>
+<center>
+    <h1>Demande edit</h1>
+
+    {{ form_start(edit_form,{'attr':{'id':'validate'}}) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('demande_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+</center>
+{% endblock %}

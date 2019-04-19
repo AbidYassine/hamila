@@ -1,0 +1,297 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+    <div class="qbootstrap-loader"></div>
+
+    <div id="page">
+
+
+    <aside id="qbootstrap-hero">
+        <div class="flexslider">
+            <ul class="slides">
+                <li style="background-image: url({{ asset('front/images/img_bg_5.jpg') }});">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center slider-text">
+                                <div class="slider-text-inner">
+                                    <h1> <strong> Empact Assurance</strong></h1>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li  style="background-image: url({{ asset('front/images/img_bg_1.jpg') }});">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center slider-text">
+                                <div class="slider-text-inner">
+                                    <h1> <strong> Ou Vous Etes</strong></h1>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="background-image: url({{ asset('front/images/img_bg_2.jpg') }});">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center slider-text">
+                                <div class="slider-text-inner">
+                                    <h1> <strong>Rien N'est Garantie ...</strong></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li  style="background-image: url({{ asset('front/images/img_bg_3.jpg') }});">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center slider-text">
+                                <div class="slider-text-inner">
+                                    <h1> <strong>Assurer Vous dés Maintenant</strong> </h1>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <div id="qbootstrap-intro">
+        <div class="row">
+            <div class="intro animate-box">
+                <div class="intro-grid color-1">
+                    <span class="icon"><i class="icon-calendar3"></i></span>
+                    <h3>Reserver Vos Rendez-vous</h3>
+
+                    <a href="#" class="btn btn-primary">Ici</a>
+                </div>
+                <div class="intro-grid color-2">
+                    <span class="icon"><i class="icon-wallet2"></i></span>
+                    <h3>Meuilleur Tarif</h3>
+
+                    <a href="{{ path('youssef_front_recherche_offres') }}" class="btn btn-primary">Ici</a>
+                </div>
+                <div class="intro-grid color-3">
+                    <span class="icon"><i class="icon-clock3"></i></span>
+                    <h3>Disponibilté</h3>
+                    <p>
+                        <span>    7/7     </span><br>
+                        <span>  24h/24h   </span><br>
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="qbootstrap-services">
+        <div class="container">
+            <div class="row animate-box">
+                <div class="col-md-6 col-md-offset-3 text-center qbootstrap-heading">
+                    <h1>Nos Service</h1>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 animate-box">
+                    <div class="services">
+						<span class="icon">
+							<i class="icon-flow-merge"></i>
+						</span>
+                        <div class="desc">
+                            <h3><a href="#">Cotisations</a></h3>
+                            <p> <br></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate-box">
+                    <div class="services">
+						<span class="icon">
+							<i class="icon-params"></i>
+						</span>
+                        <div class="desc">
+                            <h3><a href="{{ path('remboursement_index') }}">Remboursement</a></h3>
+                            <p> <br></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate-box">
+                    <div class="services">
+						<span class="icon">
+							<i class="icon-lab2"></i>
+						</span>
+                        <div class="desc">
+                            <h3><a href="#">Reclamation</a></h3>
+                            <p> <br></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 animate-box">
+                    <div class="services">
+						<span class="icon">
+							<i class="icon-heart4"></i>
+						</span>
+                        <div class="desc">
+                            <h3><a href="#">Don</a></h3>
+                            <p> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate-box">
+                    <div class="services">
+						<span class="icon">
+							<i class="icon-params"></i>
+						</span>
+                        <div class="desc">
+                            <h3><a href="{{ path('youssef_front_recherche_offres') }}">Offre</a></h3>
+                            <p> </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate-box">
+                    <div class="services">
+						<span class="icon">
+							<i class="icon-lab2"></i>
+						</span>
+                        <div class="desc">
+                            <h3><a href="#">Avis</a></h3>
+                            <p> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="qbootstrap-choose">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="choose">
+                    <div class="half img-bg"  style="background-image: url({{ asset('front/images/img_bg_6.jpg') }});"></div>
+                    <div class="half features-wrap">
+                        <div class="qbootstrap-heading animate-box">
+                            <h2>Qu'est-ce qui nous rend le meilleur?</h2>
+
+                        </div>
+                        <div class="features animate-box">
+                            <span class="icon text-center"><i class="icon-group-outline"></i></span>
+                            <div class="desc">
+                                <br>
+                                <h3>Nos services sont a la porter</h3>
+
+                            </div>
+                        </div>
+                        <div class="features animate-box">
+                            <span class="icon text-center"><i class="icon-flow-merge"></i></span>
+                            <div class="desc">
+                                <br>
+                                <h3>Nos Expert qui sont a votre service</h3>
+
+                            </div>
+                        </div>
+                        <div class="features animate-box">
+                            <span class="icon text-center"><i class="icon-document-text"></i></span>
+                            <div class="desc">
+                                <br>
+                                <h3>Le forum </h3>
+
+                            </div>
+                        </div>
+                        <div class="features animate-box">
+                            <span class="icon text-center"><i class="icon-gift"></i></span>
+                            <div class="desc">
+                                <br>
+                                <h3>Le payement securisé</h3>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="qbootstrap-doctor">
+        <div class="container-fluid">
+            <div class="row animate-box">
+                <div class="col-md-6 col-md-offset-3 text-center qbootstrap-heading">
+                    <h2>Nos Assurance Partenair</h2>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 animate-box text-center">
+                    <div class="doctor">
+                        <div class="staff-img"  style="background-image: url({{ asset('front/images/gat.jpg') }});"></div>
+                        <h3><a href="#">GAT</a></h3>
+
+                        <ul class="qbootstrap-social">
+                            <li><a href="#"><i class="icon-facebook2"></i></a></li>
+                            <li><a href="#"><i class="icon-twitter2"></i></a></li>
+                            <li><a href="#"><i class="icon-yahoo2"></i></a></li>
+                            <li><a href="#"><i class="icon-google2"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 animate-box text-center">
+                    <div class="doctor">
+                        <div class="staff-img"  style="background-image: url({{ asset('front/images/star.jpg') }});"></div>
+                        <h3><a href="#">STAR</a></h3>
+
+                        <ul class="qbootstrap-social">
+                            <li><a href="#"><i class="icon-facebook2"></i></a></li>
+                            <li><a href="#"><i class="icon-twitter2"></i></a></li>
+                            <li><a href="#"><i class="icon-yahoo2"></i></a></li>
+                            <li><a href="#"><i class="icon-google2"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 animate-box text-center">
+                    <div class="doctor">
+                        <div class="staff-img"  style="background-image: url({{ asset('front/images/ami.jpg') }});"></div>
+                        <h3><a href="#">AMI</a></h3>
+
+                        <ul class="qbootstrap-social">
+                            <li><a href="#"><i class="icon-facebook2"></i></a></li>
+                            <li><a href="#"><i class="icon-twitter2"></i></a></li>
+                            <li><a href="#"><i class="icon-yahoo2"></i></a></li>
+                            <li><a href="#"><i class="icon-google2"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 animate-box text-center">
+                    <div class="doctor">
+                        <div class="staff-img"  style="background-image: url({{ asset('front/images/astree.jpg') }});"></div>
+                        <h3><a href="#">ASTREE</a></h3>
+
+                        <ul class="qbootstrap-social">
+                            <li><a href="#"><i class="icon-facebook2"></i></a></li>
+                            <li><a href="#"><i class="icon-twitter2"></i></a></li>
+                            <li><a href="#"><i class="icon-yahoo2"></i></a></li>
+                            <li><a href="#"><i class="icon-google2"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock  %}

@@ -1,0 +1,43 @@
+
+youssef_back_homepage:
+    path:     /first
+    defaults: { _controller: YoussefBackBundle:Default:index }
+youssef_back_ajouter_offre:
+    path:     /addOffre
+    defaults: { _controller: YoussefBackBundle:Offre:new }
+youssef_back_modifier_offre:
+    path:     /modifierOffre/{id}
+    defaults: { _controller: YoussefBackBundle:Offre:edit }
+youssef_back_suppresion_offre:
+    path:     /deleteOffre/{id}
+    defaults: { _controller: YoussefBackBundle:Offre:delete }
+youssef_back_liste_offre:
+    path:     /listeOffre
+    defaults: { _controller: YoussefBackBundle:Offre:index }
+youssef_back_ajouter_Souscription:
+    path:     /addSouscription
+    defaults: { _controller: YoussefBackBundle:Souscription:new }
+youssef_back_modifier_Souscription:
+    path:     /modifierSouscription/{id}
+    defaults: { _controller: YoussefBackBundle:Souscription:edit }
+youssef_back_suppresion_Souscription:
+    path:     /deleteSouscription/{id}
+    defaults: { _controller: YoussefBackBundle:Souscription:delete }
+youssef_back_liste_Souscription:
+    path:     /listeSouscription
+    defaults: { _controller: YoussefBackBundle:Souscription:index }
+youssef_back_accepterDesabonner_Souscription:
+    path:     /accepterDesabonner/{id}
+    defaults: { _controller: YoussefBackBundle:Souscription:accepter }
+youssef_back_rejeterDesabonner_Souscription:
+    path:     /rejeterDesabonner/{id}
+    defaults: { _controller: YoussefBackBundle:Souscription:refuser }
+youssef_back_desabonnerInterface_Souscription:
+    path:     /desabonnerInterface/{id}
+    defaults: { _controller: YoussefBackBundle:Souscription:desabonnementInterface }
+youssef_back_recherche:
+    path:     /recherche
+    defaults: { _controller: YoussefBackBundle:Souscription:Recherche }
+youssef_back_stat:
+    path:     /stat
+    defaults: { _controller: YoussefBackBundle:Offre:stat }

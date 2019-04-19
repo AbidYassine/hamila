@@ -1,0 +1,17 @@
+<div>
+    <h5>Notification</h5>
+    <ul id="notification">
+
+
+        {% for notif in notification %}
+        <li>
+            <a href="{{ path('remboursementBackShow', { 'idRemboursement': notif.description }) }}">Un nouveau demande de remboursement</a>
+            <br>
+            <a href="{{ path('supprimerNotif', { 'id': notif.description }) }}">supprimer</a>
+
+        </li>
+        {% else %}
+        <li>pas de notification</li>
+        {% endfor %}
+    </ul>
+</div>

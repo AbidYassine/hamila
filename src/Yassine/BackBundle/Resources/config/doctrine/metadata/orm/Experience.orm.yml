@@ -1,0 +1,48 @@
+Experience:
+    type: entity
+    table: experience
+    indexes:
+        id_client:
+            columns:
+                - id_client
+    id:
+        idExperience:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_experience
+            generator:
+                strategy: IDENTITY
+    fields:
+        titreExperience:
+            type: string
+            nullable: false
+            length: 6000
+            options:
+                fixed: false
+            column: titre_experience
+        dateExperience:
+            type: date
+            nullable: false
+            column: date_experience
+        nbRep:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: nb_rep
+    manyToOne:
+        idClient:
+            targetEntity: Client
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_client:
+                    referencedColumnName: id_client
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

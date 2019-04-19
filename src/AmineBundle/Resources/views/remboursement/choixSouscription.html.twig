@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for sous in souscription %}
+        <tr>
+
+            <a href="{{ path('recuperer', { 'id': sous }) }}">{{ sous }}</a>
+            <br>
+        </tr>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <h1>Remboursement</h1>
+<link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered"  width="100%" cellspacing="0"id="dataTable">
+        <tbody>
+
+            <tr>
+                <th>Idclient</th>
+                <td>{{ remboursement.idClient }}</td>
+            </tr>
+
+
+            <tr>
+                <th>Montantoperation</th>
+                <td>{{ remboursement.montantOperation }}</td>
+            </tr>
+            <tr>
+                <th>Montantrembourcement</th>
+                <td>{{ remboursement.montantRembourcement }}</td>
+            </tr>
+            <tr>
+                <th>Piecejointe</th>
+                <td><a href="{{ path('remboursementBackpiecejoint', { 'idRemboursement': remboursement.idRemboursement }) }}">Piéce joint</a></td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td> {{ remboursement.commentaireRembourcement  }}</td>
+            </tr>
+            <tr>
+                <th>Typerembourcement</th>
+                <td>{{ remboursement.typeRembourcement }}</td>
+            </tr>
+            <tr>
+                <th>Daterembourcement</th>
+                <td>{{ remboursement.dateRembourcement }}</td>
+            </tr>
+            <tr>
+                <th>Traitement</th>
+                <td><a class="btn btn-success btn-lg" href="{{ path('remboursementBackEdit', { 'idRemboursement': remboursement.idRemboursement }) }}">Modifier</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('remboursementBackIndex') }}">Retour a la list des demandes</a>
+        </li>
+    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

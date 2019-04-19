@@ -1,0 +1,47 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('back/css/table.css') }}" />:
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+
+
+                <div class="card-body">
+                    <div class="table-responsive">
+
+                        <div class="tableaux">
+
+                            <center>
+                                <table class="table table-bordered" width="100%" cellspacing="0" id="dataTable" style="display:inline">
+
+
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>E-mail</th>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td><center>{{ nom }}</center></td>
+                                        <td><center>{{ prenom }}</center></td>
+                                        <td><center>{{ email }}</center></td>
+
+                                    </tr>
+                                </table>
+                            </center>
+                        </div >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock  %}

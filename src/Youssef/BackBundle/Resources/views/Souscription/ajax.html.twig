@@ -1,0 +1,56 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<div id="mydiv">
+    <div class="table-responsive">
+        <table class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%" >
+
+
+
+
+            <tr>
+                <th>id</th>
+                <th>idClient</th>
+                <th>idOffre</th>
+                <th>nombre Tranche</th>
+                <th>nombre Enfants</th>
+                <th>conjoint</th>
+                <th>montant</th>
+                <th>Date</th>
+                <th>annulation</th>
+                <th>suppression</th>
+                <th>modification</th>
+
+
+            </tr>
+
+            {% for souscription in souscriptions %}
+                <tr>
+                    <td>{{ souscription.id }}</td>
+                    <td>{{ souscription.idClient }}</td>
+                    {% if souscription.Offre is not null %}
+                        <td>{{ souscription.Offre.id }}</td>
+
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    <td>{{ souscription.nombreTranche }}</td>
+                    <td>{{ souscription.nbEnfant }}</td>
+                    <td>{{ souscription.conjoint }}</td>
+                    <td>{{ souscription.montant }}</td>
+                    <td>{{ souscription.dateSouscription |date('Y-m-d') }}</td>
+                    {% if souscription.abonnement == 1 %}
+                        <td> <center><a href="{{ path('youssef_back_desabonnerInterface_Souscription',{'id' : souscription.id}) }}" class="btn btn-danger btn-lg">traiter cas </a></center></td>
+
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                    <td> <center><a href="{{ path('youssef_back_suppresion_Souscription',{'id' : souscription.id}) }}" class="btn btn-danger btn-lg"><span  class="glyphicon glyphicon-trash"></span> </a></center></td>
+                    <td><center><a href="{{ path('youssef_back_modifier_Souscription',{'id' : souscription.id}) }}" class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-edit"></span></a></center> </td>
+
+                </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+</div>

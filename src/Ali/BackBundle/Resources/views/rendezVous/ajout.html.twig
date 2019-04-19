@@ -1,0 +1,47 @@
+{% block content %}
+    {% block javascripts %}
+
+        <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+
+        {% block documentReady %}
+
+            <script>
+                $(document).ready(function(){
+                    $(".dateRendezVous").blur(function () {
+                        var date_today =new Date().toISOString().slice(0,10);
+                        var date_debutt =new Date();
+                        date_debutt=$(".dateRendezVous").val();
+                        if(date_debutt<date_today)
+                        {
+                            $(".ldebut").show()
+                            $("#divLabelDateDebut").show();
+                        }
+                        else {
+                            $(".ldebut").hide();
+                            $("#divLabelDateDebut").hide();
+                        }
+                    })
+
+                });
+            </script>
+        {% endblock documentReady %}
+    {% endblock javascripts %}
+    <div class="p-5">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    {{ form_start(form) }}
+
+    {{ form_row(form.dateRendezVous, {'attr': {'class': 'dateRendezVous'}}) }}
+    <div class="alert alert-danger" id="divLabelDateDebut"style="display: none">
+        <label class="ldebut" style=" display:none">incorrect date debut</label>
+    </div>
+    {{ form_row(form.lieuRendezVous, {'attr': {'class': 'lieuRendezVous'}}) }}
+
+    <input type="submit" value="Ajouter"class="btn btn-primary" >
+    {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

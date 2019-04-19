@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<center>
+    <h1>Remboursement</h1>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Montantoperation</th>
+            <td>{{ remboursement.montantOperation }}</td>
+        </tr>
+        <tr>
+            <th>Montantrembourcement</th>
+            <td>{{ remboursement.montantRembourcement }}</td>
+        </tr>
+        <tr>
+            <th>Piecejointe</th>
+            <td><a href="{{ path('remboursement_piecejoint', { 'idRemboursement': remboursement.idRemboursement }) }}">Piéce jointe</a></td>
+        </tr>
+        <tr>
+            <th>Commentairerembourcement</th>
+            <td>{{ remboursement.commentaireRembourcement }}</td>
+        </tr>
+        <tr>
+            <th>Typerembourcement</th>
+            <td>{{ remboursement.typeRembourcement }}</td>
+        </tr>
+        <tr>
+            <th>Validation</th>
+            <td>{{ remboursement.validation }}</td>
+        </tr>
+        <tr>
+            <th>Daterembourcement</th>
+            <td>{{ remboursement.dateRembourcement }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('remboursement_index') }}">Retour a la liste</a>
+        </li>
+
+    </ul>
+</center>
+{% endblock %}

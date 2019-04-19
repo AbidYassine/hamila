@@ -1,0 +1,81 @@
+{% extends 'backadmin.twig' %}
+{% block content %}
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <h1 style="color: #2962ff"><center> Table des Sujets Non Valider</center></h1>
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered"  width="100%" cellspacing="0"id="dataTable">
+                            <tr>
+                                <th>id</th>
+                                <th>idClient</th>
+                                <th>dateExperience</th>
+                                <th>titreExperience</th>
+                                <th>nbRep</th>
+                                <th>Validiter</th>
+                                <th>Valider</th>
+                                <th>Refuser</th>
+                            </tr>
+                            {% for experience in experiences %}
+                                {% if experience.valider == 0%}
+                                <tr>
+                                    <td>{{ experience.idExperience }}</td>
+                                    <td>{{ experience.idClient }}</td>
+                                    <td>{{ experience.dateExperience|date('Y-m-d') }}</td>
+                                    <td>{{ experience.titreExperience | raw }}</td>
+                                    <td>{{ experience.nbRep }}</td>
+                                    <td>Non Valider</td>
+                                    <td><center><a href="{{ path('yassine_front_experiencevalider',{'id' : experience.idExperience}) }}" class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-edit"></span> > Valider </a></center> </td>
+                                    <td> <center><a href="{{ path('yassine_front_experience_suppression',{'id' : experience.idExperience}) }}"class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-trash"> </span> Refuser</a></center></td>
+
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 style="color: #2962ff"><center> Table des Sujets  Valider</center></h1>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered"  width="100%" cellspacing="0"id="dataTable">
+                            <tr>
+                                <th>id</th>
+                                <th>idClient</th>
+                                <th>dateExperience</th>
+                                <th>titreExperience</th>
+                                <th>nbRep</th>
+                                <th>Validiter</th>
+                                <th>Supprimer</th>
+                            </tr>
+                            {% for experience in experiences %}
+                                {% if experience.valider == 1%}
+                                    <tr>
+                                        <td>{{ experience.idExperience }}</td>
+                                        <td>{{ experience.idClient }}</td>
+                                        <td>{{ experience.dateExperience|date('Y-m-d') }}</td>
+                                        <td>{{ experience.titreExperience | raw }}</td>
+                                        <td>{{ experience.nbRep }}</td>
+                                        <td>Valider</td>
+                                        <td> <center><a href="{{ path('yassine_front_experience_suppression',{'id' : experience.idExperience}) }}"class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-trash"> </span> Refuser</a></center></td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock  %}

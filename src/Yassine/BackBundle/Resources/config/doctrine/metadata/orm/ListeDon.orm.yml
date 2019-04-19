@@ -1,0 +1,50 @@
+ListeDon:
+    type: entity
+    table: liste_don
+    id:
+        idP:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_p
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        prenom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        somme:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        sommeRestante:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: somme_restante
+        photo:
+            type: blob
+            nullable: true
+            length: null
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

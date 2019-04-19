@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<center>
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+
+
+                <div class="card-body">
+                    <div class="table-responsive">
+    <h1>Demandes list</h1>
+                        <br>
+                        <br>
+    <center><div class="col-md-3">
+    <input type="text" id="recherche" class="form-control">
+        </div></center><br><br><br>
+
+                        <table class="table table-bordered"  width="100%" cellspacing="0"id="dataTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Utilisateur</th>
+                <th>Etat</th>
+                <th>Typedemande</th>
+                <th>Motif</th>
+                <th>Typesoin</th>
+                <th>Textelibre</th>
+                <th>Piecejointe</th>
+                <th>Date</th>
+                <th>Reponse</th>
+            </tr>
+        </thead>
+        <tbody id="tabl">
+        {% for demande in demandes %}
+            <tr>
+                <td><a href="{{ path('demande_show', { 'id': demande.id }) }}">{{ demande.id }}</a></td>
+                <td>{{ demande.user }}</td>
+                <td>{{ demande.etat }}</td>
+                <td>{{ demande.typeDemande }}</td>
+                <td>{{ demande.motif }}</td>
+                <td>{{ demande.typeSoin }}</td>
+                <td>{{ demande.texteLibre }}</td>
+                <td>{{ demande.pieceJointe }}</td>
+                <td>{{ demande.date|date }}</td>
+                <td>{{ demande.reponse }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% if blocked != 'true' %}
+    <ul>
+        <li>
+            <a href="{{ path('demande_new') }}">Create a new demande</a>
+        </li>
+    </ul>
+                    {% endif %}
+                    </div></div></div></div></div>
+
+
+</center>
+
+    <script>
+        $(document).ready(function(){
+            $.get("{{ path('recherche_demande') }}",
+                {
+                    critere: $("#recherche").val()
+                },
+                function(data){
+                    $("#tabl").html(data);
+                });
+            $("#recherche").change(function(){
+                $.get("{{ path('recherche_demande') }}",
+                    {
+                        critere: $("#recherche").val()
+                    },
+                    function(data){
+                        $("#tabl").html(data);
+                    });
+            });
+        });
+    </script>
+{% endblock %}

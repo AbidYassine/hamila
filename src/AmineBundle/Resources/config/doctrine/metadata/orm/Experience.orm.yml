@@ -1,0 +1,46 @@
+Experience:
+    type: entity
+    table: experience
+    id:
+        idExperience:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_experience
+            generator:
+                strategy: IDENTITY
+    fields:
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_client
+        titreExperience:
+            type: string
+            nullable: false
+            length: 6000
+            options:
+                fixed: false
+            column: titre_experience
+        commentaireExperience:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: commentaire_experience
+        typeExperience:
+            type: string
+            nullable: false
+            length: 6000
+            options:
+                fixed: false
+            column: type_experience
+        dateExperience:
+            type: datetime
+            nullable: false
+            column: date_experience
+    lifecycleCallbacks: {  }

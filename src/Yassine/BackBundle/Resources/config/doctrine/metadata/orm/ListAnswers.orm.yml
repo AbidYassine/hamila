@@ -1,0 +1,45 @@
+ListAnswers:
+    type: entity
+    table: list_answers
+    indexes:
+        id_client:
+            columns:
+                - id_client
+        id_experience:
+            columns:
+                - id_experience
+    id:
+        idTopic:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_topic
+            generator:
+                strategy: IDENTITY
+    fields:
+        idExperience:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_experience
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_client
+        commentaire:
+            type: string
+            nullable: false
+            length: 65000
+            options:
+                fixed: false
+            column: Commentaire
+        dateReponse:
+            type: date
+            nullable: false
+            column: date_reponse
+    lifecycleCallbacks: {  }

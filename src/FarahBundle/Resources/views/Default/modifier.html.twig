@@ -1,0 +1,17 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <div id="qbootstrap-services">
+    <div class="container">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+<input class="btn btn-primary" type="submit" value="modifier" />
+{{ form_end(form) }}
+</div>
+</div>
+    </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<center>
+    <h1>Demande</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ demande.id }}</td>
+            </tr>
+            <tr>
+                <th>Utilisateur</th>
+                <td>{{ demande.user }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ demande.etat }}</td>
+            </tr>
+            <tr>
+                <th>Typedemande</th>
+                <td>{{ demande.typeDemande }}</td>
+            </tr>
+            <tr>
+                <th>Motif</th>
+                <td>{{ demande.motif }}</td>
+            </tr>
+            <tr>
+                <th>Typesoin</th>
+                <td>{{ demande.typeSoin }}</td>
+            </tr>
+            <tr>
+                <th>Textelibre</th>
+                <td>{{ demande.texteLibre }}</td>
+            </tr>
+            <tr>
+                <th>Piecejointe</th>
+                <td><a href="{{ asset('img/') }}{{ demande.pieceJointe }}">{{ demande.pieceJointe }}</a></td>
+            </tr>
+            <tr>
+                <th>Reponse</th>
+                <td>{{ demande.reponse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('demande_index') }}">Back to the list</a>
+        </li>
+        {% if demande.etat != 'Traite' %}
+        <li>
+            <a href="{{ path('demande_edit', { 'id': demande.id }) }}">Edit</a>
+        </li>
+        {% endif %}
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+</center>
+{% endblock %}

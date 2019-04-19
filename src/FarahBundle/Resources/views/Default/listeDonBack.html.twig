@@ -1,0 +1,44 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <table class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%" >
+
+
+
+
+                <tr>
+                    <th>N°</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Somme</th>
+                    <th>Somme Restante</th>
+                    <th>Description</th>
+                    <th>suppression</th>
+                    <th>modification</th>
+
+
+                </tr>
+
+                {% for l in liste %}
+                    <tr>
+                        <td>{{l.idP}}</td>
+                        <td>{{l.nom }}</td>
+                        <td>{{l.prenom }}</td>
+                        <td>{{ l.somme }}</td>
+                        <td>{{ l.sommeRestante }}</td>
+                        <td>{{ l.description }}</td>
+                        <td> <center><a href="{{ path('farah_back_don_suppression',{'id' : l.idP}) }}" class="btn btn-danger btn-lg"><span  class="glyphicon glyphicon-trash"></span> </a></center></td>
+                        <td><center><a href="{{ path('farah_back_don_modifier',{'id' : l.idP}) }}" class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-edit"></span></a></center> </td>
+
+                    </tr>
+
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

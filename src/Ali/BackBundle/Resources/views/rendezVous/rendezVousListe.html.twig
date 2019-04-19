@@ -1,0 +1,37 @@
+{% extends 'backExpert.html.twig' %}
+{% block content %}
+    <div class="p-5">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <table border="1">
+
+        <tr>
+            <th>id rendez vous</th>
+            <th>id expert</th>
+            <th>id client</th>
+            <th>date rendez vous</th>
+            <th>lieu rendez vous</th>
+            <th>etat</th>
+
+
+        </tr>
+
+        {% for rendez in rendezVous %}
+            <tr>
+                <td>{{ rendez.id }}</td>
+                <td>{{ rendez.idExpert }}</td>
+                <td>{{ rendez.idClient }}</td>
+                <td>{{ rendez.dateRendezVous|date('Y-m-d') }}</td>
+                <td>{{ rendez.lieuRendezVous }}</td>
+                <td>{{ rendez.etat }}</td>
+
+
+                <td> <center><a href="{{ path('ali_back_rendezVous_traiter_RendezVous',{'id' : rendez.id}) }}" >traiter</a> </center></td>
+            </tr>
+
+        {% endfor %}
+    </table>
+    </div>
+    </div>
+{% endblock %}

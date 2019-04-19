@@ -1,0 +1,57 @@
+Client:
+    type: entity
+    table: client
+    id:
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_client
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        prenom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        adresse:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        mail:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        telephone:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        dateNaissance:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: date_naissance
+        blocked:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Blocked
+    lifecycleCallbacks: {  }

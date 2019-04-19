@@ -1,0 +1,31 @@
+youssef_front_homepage:
+    path:     /hamila
+    defaults: { _controller: YoussefFrontBundle:Souscription:userSouscriptions }
+youssef_front_recherche_offres:
+    path:     /rechercheOffres
+    defaults: { _controller: YoussefFrontBundle:Offre:rechercheOffres }
+youssef_front_afficheCalcule_offres:
+    path:     /afficheCalculeOffres
+    defaults: { _controller: YoussefFrontBundle:Offre:afficheOffresCalcule }
+youssef_front_affiche_offre:
+    path:     /useraccueil/afficheOffre/{id}/{conjoint}/{enfant}/{montant}
+    defaults: { _controller: YoussefFrontBundle:Offre:afficheOffre }
+youssef_front_souscrire_souscription:
+    path:     /useraccueil/souscrire
+    defaults: { _controller: YoussefFrontBundle:Souscription:souscrireView }
+youssef_front_userSouscription_souscription:
+    path:     /useraccueil/MesSouscriptions
+    defaults: { _controller: YoussefFrontBundle:Souscription:userSouscriptions }
+youssef_front_userSouscriptionAffiche_souscription:
+    path:     /useraccueil/MesSouscriptions/{id}
+    defaults: { _controller: YoussefFrontBundle:Souscription:userSouscriptionAffiche }
+youssef_front_pdf_souscription:
+    path:     /useraccueil/pdf
+    defaults: { _controller: YoussefFrontBundle:Souscription:PdfView }
+youssef_front_annulation_souscription:
+    path:     /abonner/{id}
+    defaults: { _controller: YoussefFrontBundle:Souscription:annulation }
+home:
+    path:     /
+    defaults: { _controller: YoussefFrontBundle:Souscription:home }
+

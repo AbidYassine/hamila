@@ -1,0 +1,180 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <div class="container-fluid">
+        {% block javascripts %}
+            <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        {% block documentReady %}
+            <script>
+                $(document).ready(function(){
+                    document.getElementById('labelVisiteOffre').innerHTML = $(".pourcentageVisiteOffre").val();
+                    document.getElementById('labelMedicamentOffre').innerHTML = $(".pourcentageMedicamentOffre").val();
+                    document.getElementById('labelOperationOffre').innerHTML = $(".pourcentageOperationOffre").val();
+                    document.getElementById('labelConjoint').innerHTML = $(".prConjoint").val();
+                    document.getElementById('labelEnfant').innerHTML = $(".prEnfant").val();
+                    $(".idAssureur").prop("readonly", true);
+                    $(".pourcentageVisiteOffre").change(function () {
+                        document.getElementById('labelVisiteOffre').innerHTML = $(".pourcentageVisiteOffre").val();
+                    })
+                    $(".pourcentageMedicamentOffre").change(function () {
+                        document.getElementById('labelMedicamentOffre').innerHTML = $(".pourcentageMedicamentOffre").val();
+                    })
+                    $(".pourcentageOperationOffre").change(function () {
+                        document.getElementById('labelOperationOffre').innerHTML = $(".pourcentageOperationOffre").val();
+                    })
+                    $(".prConjoint").change(function () {
+                        document.getElementById('labelConjoint').innerHTML = $(".prConjoint").val();
+                    })
+                    $(".prEnfant").change(function () {
+                        document.getElementById('labelEnfant').innerHTML = $(".prEnfant").val();
+                    })
+
+                    $(".prixDeBaseOffre").blur(function () {
+                        if($(".prixDeBaseOffre").val()<0)
+                        {
+                            $(".lPrixDeBaseOffre").empty();
+                            $(".lPrixDeBaseOffre").append("le nombre doit etre positif!!!");
+                            $(".lPrixDeBaseOffre").show();
+                            $("#divLabelPrixDeBaseOffre").show();
+                        }
+                        else{
+                            $("#divLabelPrixDeBaseOffre").hide();
+                        }
+                    });
+                    $(".plafondOperationOffre").blur(function () {
+                        if($(".plafondOperationOffre").val()<0)
+                        {
+                            $(".lplafondOperation").empty();
+                            $(".lplafondOperation").append("le nombre doit etre positif!!!");
+                            $(".lplafondOperation").show();
+                            $("#divLabelplafondOperation").show();
+                        }
+                        else{
+                            $("#divLabelplafondOperation").hide();
+                        }
+                    });
+                    $(".plafondMedicamentOffre").blur(function () {
+                        if($(".plafondMedicamentOffre").val()<0)
+                        {
+                            $(".lplafondMedicament").empty();
+                            $(".lplafondMedicament").append("le nombre doit etre positif!!!");
+                            $(".lplafondMedicament").show();
+                            $("#divLabelplafondMedicament").show();
+                        }
+                        else{
+                            $("#divLabelplafondMedicament").hide();
+                        }
+                    });
+                    $(".plafondVisiteOffre").blur(function () {
+                        if($(".plafondVisiteOffre").val()<0)
+                        {
+                            $(".lPlafondVisite").empty();
+                            $(".lPlafondVisite").append("le nombre doit etre positif!!!");
+                            $(".lPlafondVisite").show();
+                            $("#divLabelPlafondVisite").show();
+                        }
+                        else{
+                            $("#divLabelPlafondVisite").hide();
+                        }
+                    });
+                    $("form").submit(function () {
+
+                        var a =0;
+                        var b =0;
+                        var c =0;
+                        var d =0;
+                        var e =0;
+                        var error="";
+                        var newLine = "\r\n";
+                        if($(".prixDeBaseOffre").val()<0)
+                        {
+                            a=1;
+                            error+="prix base offre ne doit pas etre negatif /n";
+                            error+= newLine;
+
+                        }
+                        if($(".plafondMedicamentOffre").val()<0)
+                        {
+                            b=1;
+                            error+="plafond Medicament Offre offre ne doit pas etre negatif /n";
+                            error+= newLine;
+
+                        }
+                        if($(".plafondVisiteOffre").val()<0)
+                        {
+                            c=1;
+                            error+="plafond Visite Offre ne doit pas etre negatif /n";
+                            error+= newLine;
+
+                        }
+                        if($(".plafondOperationOffre").val()<0)
+                        {
+                            d=1;
+                            error+="plafond Operation Offre ne doit pas etre negatif /n";
+                            error+= newLine;
+
+                        }
+
+                        if(a==1||b==1||c==1||d==1||e==1){
+                            alert(error);
+                            return false;
+                        }
+                    });
+
+                })
+            </script>
+        {% endblock documentReady %}
+        {% endblock javascripts %}
+    <!-- Page Heading -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+    <div class="card-body p-0">
+    <!-- Nested Row within Card Body -->
+
+
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            {{ form_start(form) }}
+            <div class="form-group">
+            <div class="form-control form-control-user">
+            {{ form_row(form.prixDeBaseOffre, {'attr': {'class': 'prixDeBaseOffre'}}) }}
+            </div>
+            </div>
+            <div class="alert alert-danger" id="divLabelPrixDeBaseOffre" style="display: none">
+                <label  class="lPrixDeBaseOffre" style="display:none"></label>
+            </div>
+            {{ form_row(form.dateDebutOffre, {'attr': {'class': 'dateDebutOffre'}}) }}
+
+            {{ form_row(form.pourcentageVisiteOffre, {'attr': {'class': 'pourcentageVisiteOffre'}}) }}
+            <label id="labelVisiteOffre"> </label>
+            {{ form_row(form.pourcentageMedicamentOffre, {'attr': {'class': 'pourcentageMedicamentOffre'}}) }}
+            <label id="labelMedicamentOffre"></label>
+            {{ form_row(form.pourcentageOperationOffre, {'attr': {'class': 'pourcentageOperationOffre'}}) }}
+            <label id="labelOperationOffre"></label>
+            {{ form_row(form.plafondVisiteOffre, {'attr': {'class': 'plafondVisiteOffre'}}) }}
+            <div class="alert alert-danger" id="divLabelPlafondVisite" style="display: none">
+                <label class="lPlafondVisite" style="display:none"></label>
+            </div>
+            {{ form_row(form.plafondMedicamentOffre, {'attr': {'class': 'plafondMedicamentOffre'}}) }}
+            <div class="alert alert-danger" id="divLabelplafondMedicament" style="display: none">
+                <label class="lplafondMedicament" style="display:none"></label>
+            </div>
+            {{ form_row(form.plafondOperationOffre, {'attr': {'class': 'plafondOperationOffre'}}) }}
+            <div class="alert alert-danger" id="divLabelplafondOperation" style="display: none">
+                <label class="lplafondOperation" style="display:none"></label>
+            </div>
+            {{ form_row(form.prConjoint, {'attr': {'class': 'prConjoint'}}) }}
+            <label id="labelConjoint"></label>
+            {{ form_row(form.prEnfant, {'attr': {'class': 'prEnfant'}}) }}
+            <label id="labelEnfant"></label>
+            <br>
+            <input type="submit" class="form-control bg-light border-0 small" value="modifier" />
+            {{ form_end(form) }}
+        </div>
+
+    {% endblock %}

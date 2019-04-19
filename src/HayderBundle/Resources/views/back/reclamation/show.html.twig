@@ -1,0 +1,58 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+<center>
+    <h1>Reclamation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reclamation.id }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ reclamation.etat }}</td>
+            </tr>
+            <tr>
+                <th>Typereclamation</th>
+                <td>{{ reclamation.typeReclamation }}</td>
+            </tr>
+            <tr>
+                <th>Textelibre</th>
+                <td>{{ reclamation.texteLibre }}</td>
+            </tr>
+            <tr>
+                <th>Piecejointe</th>
+                <td>{{ reclamation.pieceJointe }}</td>
+            </tr>
+            <tr>
+                <th>Reponse</th>
+                <td>{{ reclamation.reponse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reclamation_index_back') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+<h1>Repondre</h1>
+    <form action="{{ path('reclamation_reponse') }}" method="post">
+        <input type="hidden" name="id" value="{{ reclamation.id }}">
+        <textarea name="reponse" ></textarea><br>
+        <select name="etat">
+            <option value="non traite">non traite</option>
+            <option value="En cours">En cours</option>
+            <option value="Traite">Traite</option>
+        </select><br>
+        <input type="submit" value="Repondre">
+    </form>
+</center>
+{% endblock %}

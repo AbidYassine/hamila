@@ -1,0 +1,57 @@
+Souscription:
+    type: entity
+    table: souscription
+    id:
+        idSouscription:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_souscription
+            generator:
+                strategy: IDENTITY
+    fields:
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_client
+        idOffre:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_offre
+        nombreTranche:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: nombre_tranche
+        nbEnfants:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: nb_enfants
+        conjoint:
+            type: boolean
+            nullable: true
+        dateSouscription:
+            type: date
+            nullable: false
+            column: date_souscription
+        montant:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        image:
+            type: blob
+            nullable: true
+            length: null
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

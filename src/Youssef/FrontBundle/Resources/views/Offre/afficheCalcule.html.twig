@@ -1,0 +1,185 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% set cp=0 %}
+    <div id="qbootstrap-services">
+        <div class="container">
+            <div class="row animate-box">
+                <div class="col-md-6 col-md-offset-3 text-center qbootstrap-heading">
+                    <h2>Offres</h2>
+                    <p>Trouver les meilleurs offres selon vos besoins</p>
+                </div>
+            </div>
+            {% if c=="non" %}
+            <div class="row">
+                {% for offre in offres %}
+                    <div  class="col-md-4 animate-box">
+                        <div class="services">
+						<span   class="icon">
+							<i  class="icon-flow-merge"></i>
+						</span>
+                            <div class="desc" class="side animate-box fadeInUp animated-fast">
+                                <h3><a href="{{ path('youssef_front_affiche_offre',{id : offre.id,conjoint : 0,enfant : e , montant : offre.PrixDeBaseOffre+((offre.PrixDeBaseOffre*e*offre.PrEnfant)/100)}) }}" >{{ offre.Assureur.nomAssureur }}</a></h3>
+                               <ul>
+                                <li>pourcentage visite {{ offre.pourcentageVisiteOffre }} %</li>
+                                <li>plafond visite {{ offre.plafondVisiteOffre }} dt</li>
+                                <li>pourcentage medicament {{ offre.pourcentageMedicamentOffre }} %</li>
+                                <li>plafond medicament {{ offre.plafondMedicamentOffre }} dt</li>
+                                <li>pourcentage opération {{ offre.pourcentageOperationOffre }} %</li>
+                                <li>plafond opération {{ offre.plafondOperationOffre }} dt</li>
+                                <br>
+                                   <br>
+                                   <p>{{ offre.PrixDeBaseOffre+((offre.PrixDeBaseOffre*e*offre.PrEnfant)/100) }} dt</p>
+                                   {% set ss= AVG_RATING[cp][0] %}
+                                   {% set sss= ss["rating_avg"]%}
+                                   <input type="number" id="commentaiiire" value="0" style="display: none" >
+                                   {% if sss[:1]=="0"  %}
+                                       <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <br/>
+                                   {% elseif sss[:1]=="1"  %}
+                                       <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <br/>
+                                   {% elseif sss[:1]=="2"  %}
+                                       <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <br/>
+                                   {% elseif sss[:1]=="3" %}
+                                       <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <br/>
+                                   {% elseif sss[:1]=="4" %}
+                                       <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <br/>
+                                   {% elseif sss[:1]=="5" %}
+                                       <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                       <br/>
+                                   {% else %}
+                                       <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                       <br/>
+                                   {% endif %}
+                                   {% set cp=cp+1 %}
+
+                </div>
+
+
+                        </div>
+                    </div>
+
+
+                {% endfor %}
+                   </div>
+                </div>
+            </div>
+                {% endif %}
+            {% if c=="oui" %}
+                <div class="row">
+                    {% for offre in offres %}
+                        <div class="col-md-4 animate-box">
+                            <div class="services">
+						<span class="icon">
+							<i class="icon-flow-merge"></i>
+						</span>
+                                <div class="desc">
+                                    <h3><a href="{{ path('youssef_front_affiche_offre',{id : offre.id,conjoint : 1,enfant : e ,montant : offre.PrixDeBaseOffre+((offre.PrixDeBaseOffre*offre.PrConjoint)/100)+((offre.PrixDeBaseOffre*e*offre.PrEnfant)/100)}) }}">{{ offre.Assureur.nomAssureur }}</a></h3>
+
+                                    <ul>
+                                        <li>pourcentage visite {{ offre.pourcentageVisiteOffre }} %</li>
+                                        <li>plafond visite {{ offre.plafondVisiteOffre }} dt</li>
+                                        <li>pourcentage medicament {{ offre.pourcentageMedicamentOffre }} %</li>
+                                        <li>plafond medicament {{ offre.plafondMedicamentOffre }} dt</li>
+                                        <li>pourcentage opération {{ offre.pourcentageOperationOffre }} %</li>
+                                        <li>plafond opération {{ offre.plafondOperationOffre }} dt</li>
+                                        <br>
+
+                                    <br>
+                                    <p>{{ offre.PrixDeBaseOffre+((offre.PrixDeBaseOffre*offre.PrConjoint)/100)+((offre.PrixDeBaseOffre*e*offre.PrEnfant)/100) }} dt</p>
+                                        {% set ss= AVG_RATING[cp][0] %}
+                                        {% set sss= ss["rating_avg"]%}
+                                        <input type="number" id="commentaiiire" value="0" style="display: none" >
+                                        {% if sss[:1]=="0"  %}
+                                            <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <br/>
+                                        {% elseif sss[:1]=="1"  %}
+                                            <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <br/>
+                                        {% elseif sss[:1]=="2"  %}
+                                            <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <br/>
+                                        {% elseif sss[:1]=="3" %}
+                                            <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <br/>
+                                        {% elseif sss[:1]=="4" %}
+                                            <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <br/>
+                                        {% elseif sss[:1]=="5" %}
+                                            <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star checked"></span>
+                                            <br/>
+                                        {% else %}
+                                            <span  onclick="starmark(this)" id="1one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="2one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="3one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="4one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <span  onclick="starmark(this)" id="5one"  style="font-size:40px;cursor:pointer;" class="fa fa-star "></span>
+                                            <br/>
+                                        {% endif %}
+                                        {% set cp=cp+1 %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock  %}

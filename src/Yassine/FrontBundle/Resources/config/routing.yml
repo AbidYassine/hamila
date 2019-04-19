@@ -1,0 +1,14 @@
+yassine_front_homepage:
+    path:     /
+    defaults: { _controller: YassineFrontBundle:Default:index }
+
+yassine_front_experienceliste:
+    path:     /adminexperience
+    defaults: { _controller: YassineBackBundle:Experience:indexback }
+yassine_front_experiencevalider:
+    path:     /adminvalide/{id}
+    defaults: { _controller: YassineBackBundle:Experience:valider }
+
+yassine_front_experience_suppression:
+    path:     /supprimerExperience/{id}
+    defaults: { _controller: YassineBackBundle:Experience:deleteback }

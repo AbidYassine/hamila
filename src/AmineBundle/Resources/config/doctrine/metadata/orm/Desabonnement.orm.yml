@@ -1,0 +1,27 @@
+Desabonnement:
+    type: entity
+    table: desabonnement
+    id:
+        idSouscription:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_souscription
+            generator:
+                strategy: IDENTITY
+    fields:
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_client
+        idAssureur:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_assureur
+    lifecycleCallbacks: {  }

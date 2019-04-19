@@ -1,0 +1,89 @@
+Remboursement:
+    type: entity
+    table: remboursement
+    indexes:
+        FK_id_client:
+            columns:
+                - id_client
+    id:
+        idRemboursement:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_remboursement
+            generator:
+                strategy: IDENTITY
+    fields:
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_client
+        idSouscription:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_souscription
+        idAssureur:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_assureur
+        montantOperation:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: montant_operation
+        montantRembourcement:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: montant_rembourcement
+        pieceJointe:
+            type: blob
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: piece_jointe
+        extension:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+        commentaireRembourcement:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: commentaire_rembourcement
+        typeRembourcement:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: type_rembourcement
+        validation:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        dateRembourcement:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: date_rembourcement
+    lifecycleCallbacks: {  }

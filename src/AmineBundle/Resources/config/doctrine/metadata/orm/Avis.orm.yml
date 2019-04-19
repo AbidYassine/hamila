@@ -1,0 +1,44 @@
+Avis:
+    type: entity
+    table: avis
+    id:
+        idAvis:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_avis
+            generator:
+                strategy: IDENTITY
+    fields:
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_client
+        idOffre:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_offre
+        commentaireAvis:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: commentaire_avis
+        dateAvis:
+            type: datetime
+            nullable: false
+            column: date_avis
+        ratingAvis:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: rating_avis
+    lifecycleCallbacks: {  }

@@ -1,0 +1,10 @@
+{% block content %}
+
+    {{ form_start(edit_form) }}
+{{ form_row(edit_form.idClient) }}
+{{ form_row(edit_form.dateExperience) }}
+{{ form_row(edit_form.titreExperience) }}
+
+<input type="submit" value="modifier" >
+{{ form_end(edit_form) }}
+{% endblock %}

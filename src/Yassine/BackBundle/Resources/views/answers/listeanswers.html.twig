@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+
+</script>
+
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <h1><a href="{{ path('yassine_back_experience_view')}} " class="navbar-brand">Forum</a></h1>
+            <form class="form-inline">
+                <input type="text" class="form-control mr-3 mb-2 mb-sm-0" placeholder="Search">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container my-3">
+        <nav class="breadcrumb">
+
+        </nav>
+        <div class="row">
+            <div class="col-12">
+                <h2 class="h4 text-white bg-info mb-0 p-4 rounded-top">Touts Les Reponses des clients</h2>
+                <table class="table table-striped table-bordered table-responsive-lg">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Ecrivain</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Modifier/Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for answers in listAnswers %}
+                    <tr>
+                        <td class="author-col">
+                            <div>Par <a href="#">{{ answers.idClient }}</a></div>
+                        </td>
+                        <td class="post-col d-lg-flex justify-content-lg-between">
+                            <div><span class="font-weight-bold">Sujet Du Poste:</span>{{ answers.idExperience }}</div>
+                            <div><span class="font-weight-bold">Poster le:</span>{{ answers.dateReponse|date('Y-m-d') }}</div>
+                        </td>
+                        {% if answers.idClient == app.user.id %}
+                            <td class="post-col d-lg-flex justify-content-lg-between">
+                                <center><a href="{{ path('yassine_back_answer_supprission',{'id' : answers.idTopic , 'idexp' : answers.idExperience }) }}" > supprimer</a></center>
+                                <center><a href="{{ path('yassine_back_answer_modification',{'id' : answers.idTopic , 'idexp' : answers.idExperience}) }}" >modifier </a></center>
+                            </td>
+                        {% else %}
+                            <center><a  > </a></center>
+                            <center><a > </a></center>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td>
+                            <div><span class="font-weight-bold">Joined:</span><br>{{ answers.dateReponse|date('Y-m-d') }}</div>
+                            <div><span class="font-weight-bold">Posts:</span><br>123</div>
+                        </td>
+                        <td>
+                            <p  id="commment " name="commment" >{{ answers.commentaire | raw }}</p>
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="mb-3 clearfix">
+            <nav aria-label="Navigate post pages" class="float-lg-right">
+                <ul class="pagination pagination-sm mb-lg-0">
+                    <li class="page-item active"><a href="#" class="page-link">1 <span class="sr-only">(current)</span></a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">… 31</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+        <form class="mb-3" action="{{ path('yassine_back_answer_ajout2',{ 'idexp' : idexp })}}" method="post" >
+            <div class="form-group">
+                <label for="comment">Repondre a ce sujet :</label>
+                <textarea class="form-control" name="comment" id="comment" rows="10" placeholder="Write your comment here." required=""></textarea>
+            <script> CKEDITOR.replace('comment') </script>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Repondre</button>
+            <button type="reset" class="btn btn-danger">Effacer</button>
+        </form>
+
+    </div>
+
+    <!-- jQuery first, then Bootstrap JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

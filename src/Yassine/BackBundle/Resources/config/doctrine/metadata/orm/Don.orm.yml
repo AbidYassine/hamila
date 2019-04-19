@@ -1,0 +1,39 @@
+Don:
+    type: entity
+    table: don
+    indexes:
+        fk_don:
+            columns:
+                - id_client
+        fk_don_p:
+            columns:
+                - id_p
+    id:
+        idDon:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_don
+            generator:
+                strategy: IDENTITY
+    fields:
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_client
+        idP:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_p
+        somme:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+    lifecycleCallbacks: {  }

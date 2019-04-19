@@ -1,0 +1,50 @@
+yassine_back_homepage:
+    path:     /
+    defaults: { _controller: YassineBackBundle:Default:index }
+
+
+yassine_back_experience_ajout:
+    path:     /useraccueil/ajoutExperience
+    defaults: { _controller: YassineBackBundle:Experience:new }
+yassine_back_experience_suppression:
+    path:     /useraccueil/supprimerExperience/{id}
+    defaults: { _controller: YassineBackBundle:Experience:delete }
+yassine_back_experience_modification:
+    path:     /useraccueil/modifierExperience/{id}
+    defaults: { _controller: YassineBackBundle:Experience:edit }
+yassine_back_experience_view:
+    path:     /viewExperience
+    defaults: { _controller: YassineBackBundle:Experience:index }
+yassine_back_answer_ajout:
+    path:     /useraccueil/ajoutAnswer
+    defaults: { _controller: YassineBackBundle:ListAnswers:new }
+
+yassine_back_answer_ajout2:
+    path:     /useraccueil/ajouu
+    defaults: { _controller: YassineBackBundle:ListAnswers:new2 }
+
+yassine_back_answer_list:
+    path:     /listAnswer/{id}
+    defaults: { _controller: YassineBackBundle:ListAnswers:index }
+
+yassine_back_answer_modification:
+    path:     /modifierAnswer/{id}
+    defaults: { _controller: YassineBackBundle:ListAnswers:edit }
+yassine_back_answer_supprission:
+    path:     /supprimerAnswer/{id}
+    defaults: { _controller: YassineBackBundle:ListAnswers:delete }
+
+yassine_back_avis_list:
+    path:     /viewAvis
+    defaults: { _controller: YassineBackBundle:Avis:index }
+
+yassine_back_avis_ajout:
+    path:     /ajoutavis
+    defaults: { _controller: YassineBackBundle:Avis:new }
+
+yassine_back_avis_ajout2:
+    path:     /ajoutavis/{id}/{idclient}/{idoffre}/{conjoint}/{enfant}/{montant}
+    defaults: { _controller: YassineBackBundle:Avis:new2 }
+yassine_back_avis_supprission:
+    path:     /supprimerAvis/{id}
+    defaults: { _controller: YassineBackBundle:Avis:delete }

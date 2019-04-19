@@ -1,0 +1,21 @@
+ali_front_homepage:
+    path:     /a
+    defaults: { _controller: AliFrontBundle:Default:index }
+ali_front_rendezVous_ajout:
+    path:     /ajoutrendezVous
+    defaults: { _controller: AliFrontBundle:RendezVous:new }
+ali_front_mesRendezVous_view:
+    path:     /mesRendezVous
+    defaults: { _controller: AliFrontBundle:RendezVous:mesRendezVous }
+ali_front_rendezVous_annulation:
+    path:     /supprimerrendezVous/{id}
+    defaults: { _controller: AliFrontBundle:RendezVous:delete }
+ali_front_rendezVous_modification:
+    path:     /modifierrendezVous/{id}
+    defaults: { _controller: AliFrontBundle:RendezVous:edit }
+ali_front_rendezVous_like:
+    path:     /rendezVousLike/{id}
+    defaults: { _controller: AliFrontBundle:RendezVous:like }
+ali_front_rendezVous_dislike:
+    path:     /endezVousDislike/{id}
+    defaults: { _controller: AliFrontBundle:RendezVous:dislike }

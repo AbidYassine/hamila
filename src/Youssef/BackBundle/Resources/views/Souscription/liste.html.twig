@@ -1,0 +1,84 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    {% block javascripts %}
+        <link href={{ asset('bootstrap/bootstrap.min.css') }} rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        {% block documentReady %}
+            <script>
+                function submitForm() {
+                    var xhr = new XMLHttpRequest();
+                    var a = document.getElementById('recherche').value;
+
+
+                    xhr.open("GET","{{ path('youssef_back_recherche') }}?x=" + a , true);
+
+                    xhr.send(null);
+                    xhr.onreadystatechange = function () {
+
+                            document.getElementById('mydiv').innerHTML = xhr.responseText;
+
+                    }
+
+                }
+
+            </script>
+
+        {% endblock documentReady %}
+    {% endblock javascripts %}
+
+    <div class="container-fluid">
+        <div id="bootstrap-data-table_filter" class="dataTables_filter">
+            <input id="recherche" onkeyup="submitForm()"  type="search" class="form-control" placeholder="Search.." aria-controls="bootstrap-data-table">
+        </div>
+        <!-- Page Heading -->
+
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <div id="mydiv">
+            <table class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%" >
+
+
+
+
+            <tr>
+        <th>id</th>
+        <th>idClient</th>
+        <th>idOffre</th>
+        <th>nombre Tranche</th>
+                <th>nombre Enfants</th>
+        <th>conjoint</th>
+        <th>montant</th>
+                <th>Date</th>
+                <th>annulation</th>
+        <th>suppression</th>
+        <th>modification</th>
+
+
+    </tr>
+
+                {% for key,value in souscriptions %}
+                    <tr>
+                        <td> {{ value.id_souscription|e }}</td>
+                        <td> {{ value.id_client|e }}</td>
+                        <td> {{ value.Offre|e }}</td>
+                        <td> {{ value.nombre_tranche|e }}</td>
+                        <td> {{ value.nb_enfants|e }}</td>
+                        <td> {{ value.conjoint|e }}</td>
+                        <td> {{ value.montant|e }}</td>
+                        <td> {{ value.date_souscription|e }}</td>
+                        {% if value.abonnement == 1 %}
+                            <td> <center><a href="{{ path('youssef_back_desabonnerInterface_Souscription',{'id' : value.id_souscription}) }}" class="btn btn-danger btn-lg">traiter cas </a></center></td>
+
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                        <td> <center><a href="{{ path('youssef_back_suppresion_Souscription',{'id' : value.id_souscription}) }}" class="btn btn-danger btn-lg"><span  class="glyphicon glyphicon-trash"></span> </a></center></td>
+                        <td><center><a href="{{ path('youssef_back_modifier_Souscription',{'id' : value.id_souscription}) }}" class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-edit"></span></a></center> </td>
+
+                    </tr>                {% endfor %}
+</table>
+</div>
+        </div>
+</div>
+{% endblock %}

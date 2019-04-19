@@ -1,0 +1,10 @@
+{% block content %}
+
+    {{ form_start(form) }}
+{{ form_row(form.idClient) }}
+{{ form_row(form.dateExperience) }}
+{{ form_row(form.titreExperience) }}
+
+<input type="submit" value="Ajouter" >
+{{ form_end(form) }}
+{% endblock %}
